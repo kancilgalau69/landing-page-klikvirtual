@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="id" x-data="landingPageGlobal()" :class="{ 'dark': darkMode }">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KlikVirtual.ID — Ekosistem Marketplace Produk Digital Multi-Seller</title>
-    
+    <title>KlikVirtual.ID — Buka Toko Produk Digital Gratis &amp; Otomatis 24/7</title>
+
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -41,7 +43,7 @@
                             900: '#031b2e',
                         },
                         cyber: {
-                            teal: '#14b8a6', 
+                            teal: '#14b8a6',
                             emerald: '#10b981',
                         }
                     }
@@ -49,16 +51,18 @@
             }
         }
     </script>
-    
+
     <!-- Alpine.js for interactive simulation state management -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
+
     <!-- FontAwesome for high-quality professional icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
-        [x-cloak] { display: none !important; }
-        
+        [x-cloak] {
+            display: none !important;
+        }
+
         /* Smooth transitions for themes */
         .theme-transition {
             transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.4s ease, color 0.3s ease, box-shadow 0.4s ease;
@@ -68,16 +72,20 @@
         ::-webkit-scrollbar {
             width: 8px;
         }
+
         ::-webkit-scrollbar-track {
             background: #f1f5f9;
         }
+
         .dark ::-webkit-scrollbar-track {
             background: #0f172a;
         }
+
         ::-webkit-scrollbar-thumb {
             background: #cbd5e1;
             border-radius: 4px;
         }
+
         .dark ::-webkit-scrollbar-thumb {
             background: #334155;
             border-radius: 4px;
@@ -90,94 +98,117 @@
 
         /* Custom soft animations */
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
         }
+
         .animate-soft-float {
             animation: float 4s ease-in-out infinite;
         }
     </style>
 </head>
-<body class="theme-transition font-sans antialiased text-slate-800 bg-slate-50 dark:text-slate-100 dark:bg-slate-950" 
-      x-init="initSimulations()">
+
+<body class="theme-transition font-sans antialiased text-slate-800 bg-slate-50 dark:text-slate-100 dark:bg-slate-950"
+    x-init="initSimulations()">
 
     <!-- Custom Toast Notification -->
-    <div class="fixed top-5 right-5 z-50 transform transition-all duration-300"
-         x-show="toast.show" 
-         x-transition:enter="ease-out duration-300"
-         x-transition:enter-start="opacity-0 translate-y-2 sm:translate-y-0 sm:translate-x-2"
-         x-transition:enter-end="opacity-100 translate-y-0 sm:translate-x-0"
-         x-transition:leave="transition ease-in duration-100"
-         x-transition:leave-start="opacity-100"
-         x-transition:leave-end="opacity-0"
-         x-cloak>
+    <div class="fixed top-5 right-5 z-50 transform transition-all duration-300" x-show="toast.show"
+        x-transition:enter="ease-out duration-300"
+        x-transition:enter-start="opacity-0 translate-y-2 sm:translate-y-0 sm:translate-x-2"
+        x-transition:enter-end="opacity-100 translate-y-0 sm:translate-x-0"
+        x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0" x-cloak>
         <div class="flex items-center p-4 rounded-xl shadow-xl border text-sm font-medium"
-             :class="toast.type === 'success' ? 'bg-emerald-50 text-emerald-800 border-emerald-200 dark:bg-emerald-950/80 dark:text-emerald-200 dark:border-emerald-800' : 'bg-slate-800 text-slate-100 border-slate-700'">
-            <i class="mr-3 text-lg" :class="toast.type === 'success' ? 'fa-solid fa-circle-check text-emerald-500' : 'fa-solid fa-circle-info text-blue-400'"></i>
+            :class="toast.type === 'success' ? 'bg-emerald-50 text-emerald-800 border-emerald-200 dark:bg-emerald-950/80 dark:text-emerald-200 dark:border-emerald-800' : 'bg-slate-800 text-slate-100 border-slate-700'">
+            <i class="mr-3 text-lg"
+                :class="toast.type === 'success' ? 'fa-solid fa-circle-check text-emerald-500' : 'fa-solid fa-circle-info text-blue-400'"></i>
             <span x-text="toast.message"></span>
         </div>
     </div>
 
     <!-- Navigation Header -->
-    <header class="sticky top-0 z-40 w-full theme-transition border-b bg-white/80 backdrop-blur-md border-slate-200 dark:bg-slate-950/80 dark:border-slate-800">
+    <header
+        class="sticky top-0 z-40 w-full theme-transition border-b bg-white/80 backdrop-blur-md border-slate-200 dark:bg-slate-950/80 dark:border-slate-800">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <!-- Brand Logo with specific image requested -->
             <a href="#" class="flex items-center gap-2.5 group">
-                <img src="https://putrabttstore.web.id/Logo%20Klik%20Virtual.png" 
-                     alt="KlikVirtual.ID Logo" 
-                     class="w-10 h-10 object-contain rounded-xl shadow-md shadow-brand-500/10 group-hover:scale-105 transition-transform duration-200"
-                     onerror="this.onerror=null; this.src='https://placehold.co/40x40/0284c7/ffffff?text=KV';">
+                <img src="https://putrabttstore.web.id/Logo%20Klik%20Virtual.png" alt="KlikVirtual.ID Logo"
+                    class="w-10 h-10 object-contain rounded-xl shadow-md shadow-brand-500/10 group-hover:scale-105 transition-transform duration-200"
+                    onerror="this.onerror=null; this.src='https://placehold.co/40x40/0284c7/ffffff?text=KV';">
                 <div>
-                    <span class="text-lg font-extrabold tracking-tight text-slate-900 dark:text-white">KlikVirtual<span class="text-brand-500">.ID</span></span>
-                    <span class="block text-[10px] font-medium tracking-wider text-slate-500 dark:text-slate-400 uppercase -mt-1">PBS Digital Ecosystem</span>
+                    <span class="text-lg font-extrabold tracking-tight text-slate-900 dark:text-white">KlikVirtual<span
+                            class="text-brand-500">.ID</span></span>
+                    <span
+                        class="block text-[10px] font-medium tracking-wider text-slate-500 dark:text-slate-400 uppercase -mt-1">Buka
+                        Toko Online Gratis</span>
                 </div>
             </a>
 
             <!-- Desktop Nav Items -->
             <nav class="hidden md:flex items-center gap-8">
-                <a href="#fitur-store" class="text-sm font-medium hover:text-brand-500 transition-colors">Market Store</a>
-                <a href="#fitur-dashboard" class="text-sm font-medium hover:text-brand-500 transition-colors">Market Dashboard</a>
-                <a href="#simulasi-pendapatan" class="text-sm font-medium hover:text-brand-500 transition-colors">Simulasi Keuntungan</a>
-                <a href="#cara-kerja" class="text-sm font-medium hover:text-brand-500 transition-colors">Mulai Jualan</a>
-                <a href="#faq" class="text-sm font-medium hover:text-brand-500 transition-colors">FAQ</a>
+                <a href="#fitur-store" class="text-sm font-medium hover:text-brand-500 transition-colors">Halaman
+                    Toko</a>
+                <a href="#fitur-dashboard" class="text-sm font-medium hover:text-brand-500 transition-colors">Fitur
+                    Toko</a>
+                <a href="#simulasi-pendapatan"
+                    class="text-sm font-medium hover:text-brand-500 transition-colors">Simulasi Hasil</a>
+                <a href="#cara-kerja" class="text-sm font-medium hover:text-brand-500 transition-colors">Cara Jualan</a>
+                <a href="#faq" class="text-sm font-medium hover:text-brand-500 transition-colors">Tanya Jawab</a>
             </nav>
 
             <!-- Right Actions (Theme Switcher + CTA Button) -->
             <div class="flex items-center gap-4">
                 <!-- Theme toggle switch (default Light Mode) -->
-                <button @click="darkMode = !darkMode" 
-                        class="p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-all"
-                        aria-label="Toggle Dark Mode">
+                <button @click="darkMode = !darkMode"
+                    class="p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-all"
+                    aria-label="Toggle Dark Mode">
                     <i class="fa-solid" :class="darkMode ? 'fa-sun text-yellow-400' : 'fa-moon text-slate-600'"></i>
                 </button>
 
                 <!-- CTA Button -->
-                <a href="https://klikvirtual.id/" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-sm font-semibold rounded-lg text-white bg-brand-500 hover:bg-brand-600 shadow-md shadow-brand-500/10 active:scale-[0.98] transition-all">
-                    Mulai Berjualan <i class="fa-solid fa-arrow-trend-up ml-2 text-xs"></i>
+                <a href="https://seller.klikvirtual.id/register" target="_blank" rel="noopener noreferrer"
+                    class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-sm font-bold rounded-lg text-white bg-brand-500 hover:bg-brand-600 shadow-md shadow-brand-500/10 active:scale-[0.98] transition-all">
+                    Daftar Gratis <i class="fa-solid fa-rocket ml-2 text-xs"></i>
                 </a>
 
                 <!-- Mobile Menu Button -->
-                <button @click="mobileMenuOpen = !mobileMenuOpen" class="p-2 md:hidden text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg">
+                <button @click="mobileMenuOpen = !mobileMenuOpen"
+                    class="p-2 md:hidden text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg">
                     <i class="fa-solid text-xl" :class="mobileMenuOpen ? 'fa-xmark' : 'fa-bars'"></i>
                 </button>
             </div>
         </div>
 
         <!-- Mobile Menu Panel -->
-        <div x-show="mobileMenuOpen" 
-             @click.away="mobileMenuOpen = false" 
-             class="md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-4 py-3 space-y-2 shadow-xl"
-             x-transition:enter="transition ease-out duration-150"
-             x-transition:enter-start="opacity-0 -translate-y-4"
-             x-transition:enter-end="opacity-100 translate-y-0"
-             x-cloak>
-            <a href="#fitur-store" @click="mobileMenuOpen = false" class="block px-3 py-2.5 rounded-lg text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-900">Market Store</a>
-            <a href="#fitur-dashboard" @click="mobileMenuOpen = false" class="block px-3 py-2.5 rounded-lg text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-900">Market Dashboard</a>
-            <a href="#simulasi-pendapatan" @click="mobileMenuOpen = false" class="block px-3 py-2.5 rounded-lg text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-900">Simulasi Keuntungan</a>
-            <a href="#cara-kerja" @click="mobileMenuOpen = false" class="block px-3 py-2.5 rounded-lg text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-900">Mulai Jualan</a>
-            <a href="#faq" @click="mobileMenuOpen = false" class="block px-3 py-2.5 rounded-lg text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-900">FAQ</a>
-            <a href="https://klikvirtual.id/" target="_blank" rel="noopener noreferrer" @click="mobileMenuOpen = false" class="block w-full text-center px-4 py-2.5 font-bold rounded-lg text-white bg-brand-500 hover:bg-brand-600 shadow-md">
-                Daftar Jadi Seller <i class="fa-solid fa-arrow-trend-up ml-1 text-xs"></i>
+        <div x-show="mobileMenuOpen" @click.away="mobileMenuOpen = false"
+            class="md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-4 py-3 space-y-2 shadow-xl"
+            x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 -translate-y-4"
+            x-transition:enter-end="opacity-100 translate-y-0" x-cloak>
+            <a href="#fitur-store" @click="mobileMenuOpen = false"
+                class="block px-3 py-2.5 rounded-lg text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-900">Halaman
+                Toko</a>
+            <a href="#fitur-dashboard" @click="mobileMenuOpen = false"
+                class="block px-3 py-2.5 rounded-lg text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-900">Fitur
+                Toko</a>
+            <a href="#simulasi-pendapatan" @click="mobileMenuOpen = false"
+                class="block px-3 py-2.5 rounded-lg text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-900">Simulasi
+                Hasil</a>
+            <a href="#cara-kerja" @click="mobileMenuOpen = false"
+                class="block px-3 py-2.5 rounded-lg text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-900">Cara
+                Jualan</a>
+            <a href="#faq" @click="mobileMenuOpen = false"
+                class="block px-3 py-2.5 rounded-lg text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-900">Tanya
+                Jawab</a>
+            <a href="https://klikvirtual.id/" target="_blank" rel="noopener noreferrer" @click="mobileMenuOpen = false"
+                class="block w-full text-center px-4 py-2.5 font-bold rounded-lg text-white bg-brand-500 hover:bg-brand-600 shadow-md">
+                Daftar Buka Toko Gratis <i class="fa-solid fa-rocket ml-1 text-xs"></i>
             </a>
         </div>
     </header>
@@ -185,48 +216,62 @@
     <!-- Hero Section -->
     <section class="relative overflow-hidden py-12 lg:py-20 xl:py-24">
         <!-- Ambient decorative shapes (non-tacky, subtle glow) -->
-        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-brand-500/10 rounded-full blur-[120px] pointer-events-none"></div>
-        <div class="absolute top-1/3 left-1/4 w-[300px] h-[300px] bg-cyber-teal/5 rounded-full blur-[100px] pointer-events-none"></div>
+        <div
+            class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-brand-500/10 rounded-full blur-[120px] pointer-events-none">
+        </div>
+        <div
+            class="absolute top-1/3 left-1/4 w-[300px] h-[300px] bg-cyber-teal/5 rounded-full blur-[100px] pointer-events-none">
+        </div>
 
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
                 <!-- Left Side: Copywriting -->
                 <div class="lg:col-span-5 text-center lg:text-left space-y-6">
-                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-50 text-brand-600 dark:bg-brand-950/80 dark:text-brand-100 border border-brand-200/50 dark:border-brand-800/50 text-xs font-semibold uppercase tracking-wider">
-                        <i class="fa-solid fa-circle-play text-brand-500 animate-pulse"></i> Ecosystem Marketplace No. 1 Indonesia
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-50 text-brand-600 dark:bg-brand-950/80 dark:text-brand-100 border border-brand-200/50 dark:border-brand-800/50 text-xs font-bold uppercase tracking-wider">
+                        <i class="fa-solid fa-rocket text-brand-500 animate-bounce"></i> Pendaftaran 100% Gratis
+                        Selamanya
                     </div>
-                    
-                    <h1 class="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-white">
-                        Otomatisasi Bisnis <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-cyan-500">Produk Digital</span> Anda.
+
+                    <h1
+                        class="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-white">
+                        Jualan <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-cyan-500">Produk
+                            Digital</span> Otomatis 24/7.
                     </h1>
-                    
+
                     <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto lg:mx-0">
-                        Satu platform multi-seller yang menghubungkan etalase kustom Anda (<strong class="text-brand-500">Market Store</strong>) dengan pusat kontrol penjualan (<strong class="text-brand-500">Market Dashboard</strong>) berbasis notifikasi instan Telegram & Pembayaran QRIS Midtrans otomatis 24/7.
+                        Dapatkan halaman toko profesional Anda sendiri dengan alamat kustom <strong
+                            class="text-brand-500">klikvirtual.id/namatoko</strong>. Sistem otomatis mendeteksi
+                        pembayaran QRIS dan mengirim produk ke pembeli saat Anda tidur!
                     </p>
 
                     <!-- CTAs with brand styling -->
                     <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-                        <a href="https://klikvirtual.id/" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 text-base font-bold rounded-xl text-white bg-brand-500 hover:bg-brand-600 shadow-lg shadow-brand-500/20 active:scale-95 transition-all">
-                            Mulai Jualan Sekarang <i class="fa-solid fa-arrow-right ml-2"></i>
+                        <a href="https://seller.klikvirtual.id/register" target="_blank" rel="noopener noreferrer"
+                            class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 text-base font-bold rounded-xl text-white bg-brand-500 hover:bg-brand-600 shadow-lg shadow-brand-500/20 active:scale-95 transition-all">
+                            Daftar Gratis &amp; Mulai Jualan <i class="fa-solid fa-rocket ml-2"></i>
                         </a>
-                        <a href="#fitur-store" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold rounded-xl text-slate-700 bg-slate-100 hover:bg-slate-200 dark:text-slate-200 dark:bg-slate-900 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 active:scale-95 transition-all">
-                            Jelajahi Fitur <i class="fa-solid fa-angle-down ml-2"></i>
+                        <a href="#fitur-store"
+                            class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold rounded-xl text-slate-700 bg-slate-100 hover:bg-slate-200 dark:text-slate-200 dark:bg-slate-900 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 active:scale-95 transition-all">
+                            Lihat Cara Kerja <i class="fa-solid fa-angle-down ml-2"></i>
                         </a>
                     </div>
 
                     <!-- Highlight Badges -->
-                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-slate-200/80 dark:border-slate-800/60 text-center lg:text-left">
+                    <div
+                        class="grid grid-cols-3 gap-4 pt-6 border-t border-slate-200/80 dark:border-slate-800/60 text-center lg:text-left">
                         <div>
                             <span class="block text-2xl font-black text-brand-500">24/7</span>
                             <span class="text-xs text-slate-500 dark:text-slate-400">Pengiriman Otomatis</span>
                         </div>
                         <div>
                             <span class="block text-2xl font-black text-brand-500">QRIS</span>
-                            <span class="text-xs text-slate-500 dark:text-slate-400">Instan & Terverifikasi</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400">Pembayaran Instan</span>
                         </div>
                         <div>
-                            <span class="block text-2xl font-black text-brand-500">3 Detik</span>
-                            <span class="text-xs text-slate-500 dark:text-slate-400">Polling Real-Time Chat</span>
+                            <span class="block text-2xl font-black text-brand-500">Gratis</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400">Tanpa Biaya Bulanan</span>
                         </div>
                     </div>
                 </div>
@@ -234,23 +279,28 @@
                 <!-- Right Side: Dual View Interactive Mockup -->
                 <div class="lg:col-span-7" x-data="{ currentMockup: 'store' }">
                     <!-- Tab Switcher Header -->
-                    <div class="flex items-center justify-center gap-2 mb-4 p-1 rounded-xl bg-slate-200/60 dark:bg-slate-900/60 border border-slate-300/30 max-w-sm mx-auto">
-                        <button @click="currentMockup = 'store'; triggerToast('Menampilkan Demo Storefront Putra Btt Store (Sisi Pembeli)')" 
-                                :class="currentMockup === 'store' ? 'bg-white dark:bg-slate-800 shadow text-brand-500' : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-100'"
-                                class="flex-1 py-2 text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-1.5">
-                            <i class="fa-solid fa-cart-shopping"></i> Market Store
+                    <div
+                        class="flex items-center justify-center gap-2 mb-4 p-1 rounded-xl bg-slate-200/60 dark:bg-slate-900/60 border border-slate-300/30 max-w-sm mx-auto">
+                        <button
+                            @click="currentMockup = 'store'; triggerToast('Menampilkan Demo Halaman Toko Online (Sisi Pembeli)')"
+                            :class="currentMockup === 'store' ? 'bg-white dark:bg-slate-800 shadow text-brand-500' : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-100'"
+                            class="flex-1 py-2 text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-cart-shopping"></i> Halaman Toko
                         </button>
-                        <button @click="currentMockup = 'dashboard'; triggerToast('Menampilkan Demo Dashboard Seller Putra Btt Store (Sisi Penjual)')" 
-                                :class="currentMockup === 'dashboard' ? 'bg-white dark:bg-slate-800 shadow text-brand-500' : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-100'"
-                                class="flex-1 py-2 text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-1.5">
-                            <i class="fa-solid fa-chart-line"></i> Market Dashboard
+                        <button
+                            @click="currentMockup = 'dashboard'; triggerToast('Menampilkan Demo Dashboard Kelola Toko (Sisi Penjual)')"
+                            :class="currentMockup === 'dashboard' ? 'bg-white dark:bg-slate-800 shadow text-brand-500' : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-100'"
+                            class="flex-1 py-2 text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-chart-line"></i> Dashboard Seller
                         </button>
                     </div>
 
                     <!-- MOCKUP CONTAINER -->
-                    <div class="relative mx-auto max-w-[620px] rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xl shadow-brand-500/5 aspect-[4/3] flex flex-col">
+                    <div
+                        class="relative mx-auto max-w-[620px] rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xl shadow-brand-500/5 aspect-[4/3] flex flex-col">
                         <!-- Browser Bar -->
-                        <div class="h-10 bg-slate-100 dark:bg-slate-950 px-4 flex items-center justify-between border-b border-slate-200 dark:border-slate-800">
+                        <div
+                            class="h-10 bg-slate-100 dark:bg-slate-950 px-4 flex items-center justify-between border-b border-slate-200 dark:border-slate-800">
                             <!-- Buttons -->
                             <div class="flex items-center gap-1.5">
                                 <span class="w-3 h-3 rounded-full bg-red-400 inline-block"></span>
@@ -258,77 +308,106 @@
                                 <span class="w-3 h-3 rounded-full bg-green-400 inline-block"></span>
                             </div>
                             <!-- Address Input -->
-                            <div class="px-3 py-1 text-[11px] font-mono rounded-md bg-white dark:bg-slate-900 text-slate-400 dark:text-slate-500 w-2/3 text-center border border-slate-200/50 dark:border-slate-800/80">
-                                <span class="text-brand-500 font-semibold" x-text="currentMockup === 'store' ? 'klikvirtual.id/' : 'seller.klikvirtual.id/'"></span><span x-text="currentMockup === 'store' ? 'putra-btt-store' : 'dashboard/products'"></span>
+                            <div
+                                class="px-3 py-1 text-[11px] font-mono rounded-md bg-white dark:bg-slate-900 text-slate-400 dark:text-slate-500 w-2/3 text-center border border-slate-200/50 dark:border-slate-800/80">
+                                <span class="text-brand-500 font-semibold"
+                                    x-text="currentMockup === 'store' ? 'klikvirtual.id/' : 'seller.klikvirtual.id/'"></span><span
+                                    x-text="currentMockup === 'store' ? 'namatoko' : 'dashboard/products'"></span>
                             </div>
                             <!-- Icon -->
                             <div class="text-slate-400"><i class="fa-solid fa-lock text-xs"></i></div>
                         </div>
 
                         <!-- Mockup View: Storefront (Buyer) -->
-                        <div x-show="currentMockup === 'store'" x-transition:enter="transition ease-out duration-300" class="flex-1 flex flex-col overflow-y-auto" x-cloak>
+                        <div x-show="currentMockup === 'store'" x-transition:enter="transition ease-out duration-300"
+                            class="flex-1 flex flex-col overflow-y-auto" x-cloak>
                             <!-- Banner -->
-                            <div class="bg-gradient-to-r from-brand-600 to-brand-700 p-5 text-white flex justify-between items-center relative overflow-hidden">
+                            <div
+                                class="bg-gradient-to-r from-brand-600 to-brand-700 p-5 text-white flex justify-between items-center relative overflow-hidden">
                                 <div class="absolute -right-10 -bottom-10 w-32 h-32 bg-white/5 rounded-full"></div>
                                 <div class="space-y-1 relative z-10">
-                                    <span class="text-[9px] font-bold bg-amber-500/90 text-slate-950 px-2 py-0.5 rounded-full uppercase">Flash Sale Terbatas</span>
-                                    <h3 class="text-lg font-bold">Putra Btt Store</h3>
-                                    <p class="text-xs text-slate-100 opacity-90"><i class="fa-solid fa-circle text-emerald-400 text-[8px] animate-pulse mr-1"></i> Toko Resmi • Digital License Provider</p>
+                                    <span
+                                        class="text-[9px] font-bold bg-amber-500/90 text-slate-950 px-2 py-0.5 rounded-full uppercase">Toko
+                                        Online Anda</span>
+                                    <h3 class="text-lg font-bold">Nama Toko Anda</h3>
+                                    <p class="text-xs text-slate-100 opacity-90"><i
+                                            class="fa-solid fa-circle text-emerald-400 text-[8px] animate-pulse mr-1"></i>
+                                        Toko Resmi • Penjual Produk Digital</p>
                                 </div>
-                                <span class="text-xs bg-white/10 px-3 py-1.5 rounded-lg border border-white/20 font-medium">Buka 24 Jam</span>
+                                <span
+                                    class="text-xs bg-white/10 px-3 py-1.5 rounded-lg border border-white/20 font-medium">Buka
+                                    24/7</span>
                             </div>
 
                             <!-- Catalog Area -->
                             <div class="p-4 space-y-4 flex-1">
                                 <div class="flex items-center justify-between">
-                                    <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">Etalase Lisensi Premium</h4>
-                                    <span class="text-xs text-brand-500 font-semibold cursor-pointer">Lihat Semua <i class="fa-solid fa-angle-right text-[10px]"></i></span>
+                                    <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">Etalase Produk
+                                        Digital</h4>
+                                    <span class="text-xs text-brand-500 font-semibold cursor-pointer">Lihat Semua <i
+                                            class="fa-solid fa-angle-right text-[10px]"></i></span>
                                 </div>
 
                                 <div class="grid grid-cols-2 gap-3">
                                     <!-- Card 1 -->
-                                    <div class="border border-slate-200 dark:border-slate-800 rounded-xl p-3 bg-slate-50 dark:bg-slate-950/40 relative flex flex-col justify-between">
+                                    <div
+                                        class="border border-slate-200 dark:border-slate-800 rounded-xl p-3 bg-slate-50 dark:bg-slate-950/40 relative flex flex-col justify-between">
                                         <div>
-                                            <span class="text-[9px] font-bold bg-brand-100 text-brand-700 dark:bg-brand-950 dark:text-brand-300 px-2 py-0.5 rounded-md">Lisensi</span>
-                                            <h5 class="text-xs font-bold mt-1 text-slate-900 dark:text-white leading-snug">Putra Btt Engine Pro</h5>
+                                            <span
+                                                class="text-[9px] font-bold bg-brand-100 text-brand-700 dark:bg-brand-950 dark:text-brand-300 px-2 py-0.5 rounded-md">Lisensi</span>
+                                            <h5
+                                                class="text-xs font-bold mt-1 text-slate-900 dark:text-white leading-snug">
+                                                Lisensi Premium Software</h5>
                                             <div class="flex items-center gap-1.5 mt-1">
                                                 <span class="text-xs font-extrabold text-brand-500">Rp 149K</span>
                                                 <span class="text-[9px] line-through text-slate-400">Rp 250K</span>
                                             </div>
                                         </div>
-                                        <button @click="triggerToast('Item berhasil dimasukkan ke Keranjang Belanja!')" class="w-full mt-3 bg-brand-500 hover:bg-brand-600 text-white text-[10px] font-bold py-1.5 rounded-lg transition-colors flex items-center justify-center gap-1">
+                                        <button @click="triggerToast('Item berhasil dimasukkan ke Keranjang Belanja!')"
+                                            class="w-full mt-3 bg-brand-500 hover:bg-brand-600 text-white text-[10px] font-bold py-1.5 rounded-lg transition-colors flex items-center justify-center gap-1">
                                             <i class="fa-solid fa-cart-plus text-[9px]"></i> + Keranjang
                                         </button>
                                     </div>
                                     <!-- Card 2 -->
-                                    <div class="border border-slate-200 dark:border-slate-800 rounded-xl p-3 bg-slate-50 dark:bg-slate-950/40 relative flex flex-col justify-between">
+                                    <div
+                                        class="border border-slate-200 dark:border-slate-800 rounded-xl p-3 bg-slate-50 dark:bg-slate-950/40 relative flex flex-col justify-between">
                                         <div>
-                                            <span class="text-[9px] font-bold bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300 px-2 py-0.5 rounded-md">Voucher</span>
-                                            <h5 class="text-xs font-bold mt-1 text-slate-900 dark:text-white leading-snug">Spotify Premium 1 Th</h5>
+                                            <span
+                                                class="text-[9px] font-bold bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300 px-2 py-0.5 rounded-md">Voucher</span>
+                                            <h5
+                                                class="text-xs font-bold mt-1 text-slate-900 dark:text-white leading-snug">
+                                                Voucher Game / Akun Premium</h5>
                                             <div class="flex items-center gap-1.5 mt-1">
                                                 <span class="text-xs font-extrabold text-brand-500">Rp 89K</span>
                                                 <span class="text-[9px] line-through text-slate-400">Rp 120K</span>
                                             </div>
                                         </div>
-                                        <button @click="triggerToast('Item berhasil dimasukkan ke Keranjang Belanja!')" class="w-full mt-3 bg-brand-500 hover:bg-brand-600 text-white text-[10px] font-bold py-1.5 rounded-lg transition-colors flex items-center justify-center gap-1">
+                                        <button @click="triggerToast('Item berhasil dimasukkan ke Keranjang Belanja!')"
+                                            class="w-full mt-3 bg-brand-500 hover:bg-brand-600 text-white text-[10px] font-bold py-1.5 rounded-lg transition-colors flex items-center justify-center gap-1">
                                             <i class="fa-solid fa-cart-plus text-[9px]"></i> + Keranjang
                                         </button>
                                     </div>
                                 </div>
 
                                 <!-- Sticky Real-time Chat Bar Preview -->
-                                <div class="border border-brand-500/20 bg-brand-50/50 dark:bg-brand-950/20 rounded-xl p-3 flex items-center justify-between">
+                                <div
+                                    class="border border-brand-500/20 bg-brand-50/50 dark:bg-brand-950/20 rounded-xl p-3 flex items-center justify-between">
                                     <div class="flex items-center gap-2">
                                         <span class="relative flex h-2 w-2">
-                                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                                            <span
+                                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
                                             <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
                                         </span>
                                         <div class="text-[11px]">
-                                            <p class="font-bold text-slate-900 dark:text-white leading-none">Hubungi Penjual</p>
-                                            <p class="text-[9px] text-slate-400 mt-0.5">Live-chat tersambung telegram seller</p>
+                                            <p class="font-bold text-slate-900 dark:text-white leading-none">Hubungi
+                                                Penjual</p>
+                                            <p class="text-[9px] text-slate-400 mt-0.5">Pertanyaan langsung masuk ke
+                                                Telegram penjual</p>
                                         </div>
                                     </div>
-                                    <button @click="currentMockup = 'dashboard'; triggerToast('Mengaktifkan dashboard demo, lihat notifikasi chat!')" class="bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-500 dark:text-cyan-300 font-bold text-[10px] px-2.5 py-1.5 rounded-md transition-colors">
+                                    <button
+                                        @click="currentMockup = 'dashboard'; triggerToast('Membuka dashboard demo penjual.')"
+                                        class="bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-500 dark:text-cyan-300 font-bold text-[10px] px-2.5 py-1.5 rounded-md transition-colors">
                                         Kirim Pesan
                                     </button>
                                 </div>
@@ -336,64 +415,100 @@
                         </div>
 
                         <!-- Mockup View: Dashboard (Seller) -->
-                        <div x-show="currentMockup === 'dashboard'" x-transition:enter="transition ease-out duration-300" class="flex-1 flex overflow-hidden" x-cloak>
+                        <div x-show="currentMockup === 'dashboard'"
+                            x-transition:enter="transition ease-out duration-300" class="flex-1 flex overflow-hidden"
+                            x-cloak>
                             <!-- Mini Sidebar -->
-                            <div class="w-16 bg-slate-100 dark:bg-slate-950 border-r border-slate-200 dark:border-slate-800 flex flex-col items-center py-4 justify-between">
+                            <div
+                                class="w-16 bg-slate-100 dark:bg-slate-950 border-r border-slate-200 dark:border-slate-800 flex flex-col items-center py-4 justify-between">
                                 <div class="space-y-4 flex flex-col items-center">
-                                    <span class="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center text-white"><i class="fa-solid fa-chart-pie text-sm"></i></span>
-                                    <span class="w-8 h-8 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-900 flex items-center justify-center text-slate-400"><i class="fa-solid fa-box-open text-xs"></i></span>
-                                    <span class="w-8 h-8 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-900 flex items-center justify-center text-slate-400"><i class="fa-solid fa-receipt text-xs"></i></span>
-                                    <span class="w-8 h-8 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-900 flex items-center justify-center text-slate-400 relative">
+                                    <span
+                                        class="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center text-white"><i
+                                            class="fa-solid fa-chart-pie text-sm"></i></span>
+                                    <span
+                                        class="w-8 h-8 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-900 flex items-center justify-center text-slate-400"><i
+                                            class="fa-solid fa-box-open text-xs"></i></span>
+                                    <span
+                                        class="w-8 h-8 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-900 flex items-center justify-center text-slate-400"><i
+                                            class="fa-solid fa-receipt text-xs"></i></span>
+                                    <span
+                                        class="w-8 h-8 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-900 flex items-center justify-center text-slate-400 relative">
                                         <i class="fa-solid fa-comment-dots text-xs"></i>
                                         <span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-red-500"></span>
                                     </span>
                                 </div>
-                                <span class="w-8 h-8 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-900 flex items-center justify-center text-slate-400"><i class="fa-solid fa-gear text-xs"></i></span>
+                                <span
+                                    class="w-8 h-8 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-900 flex items-center justify-center text-slate-400"><i
+                                        class="fa-solid fa-gear text-xs"></i></span>
                             </div>
 
                             <!-- Content Area -->
                             <div class="flex-1 p-4 overflow-y-auto space-y-4">
                                 <div class="flex items-center justify-between">
-                                    <h4 class="text-xs font-extrabold text-slate-800 dark:text-slate-100 uppercase tracking-wider">Ringkasan Toko</h4>
-                                    <span class="text-[10px] bg-emerald-500/10 text-emerald-500 font-bold px-2.5 py-1 rounded-full"><i class="fa-solid fa-circle text-[7px] mr-1"></i> Sinkronisasi Telegram</span>
+                                    <h4
+                                        class="text-xs font-extrabold text-slate-800 dark:text-slate-100 uppercase tracking-wider">
+                                        Ringkasan Toko</h4>
+                                    <span
+                                        class="text-[10px] bg-emerald-500/10 text-emerald-500 font-bold px-2.5 py-1 rounded-full"><i
+                                            class="fa-solid fa-circle text-[7px] mr-1"></i> Notifikasi Telegram
+                                        Aktif</span>
                                 </div>
 
                                 <!-- Stat Cards -->
                                 <div class="grid grid-cols-3 gap-2">
-                                    <div class="border border-slate-200 dark:border-slate-800 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-950/30 text-center">
-                                        <span class="text-[9px] text-slate-400 block uppercase font-semibold">Pendapatan</span>
-                                        <span class="text-xs font-black text-brand-500">Rp 4.2M</span>
+                                    <div
+                                        class="border border-slate-200 dark:border-slate-800 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-950/30 text-center">
+                                        <span
+                                            class="text-[9px] text-slate-400 block uppercase font-semibold">Pendapatan</span>
+                                        <span class="text-xs font-black text-brand-500">Rp 4.2Jt</span>
                                     </div>
-                                    <div class="border border-slate-200 dark:border-slate-800 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-950/30 text-center">
-                                        <span class="text-[9px] text-slate-400 block uppercase font-semibold">Pesanan</span>
+                                    <div
+                                        class="border border-slate-200 dark:border-slate-800 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-950/30 text-center">
+                                        <span
+                                            class="text-[9px] text-slate-400 block uppercase font-semibold">Pesanan</span>
                                         <span class="text-xs font-black text-slate-800 dark:text-slate-200">238</span>
                                     </div>
-                                    <div class="border border-slate-200 dark:border-slate-800 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-950/30 text-center">
-                                        <span class="text-[9px] text-slate-400 block uppercase font-semibold">Stok Digital</span>
+                                    <div
+                                        class="border border-slate-200 dark:border-slate-800 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-950/30 text-center">
+                                        <span class="text-[9px] text-slate-400 block uppercase font-semibold">Stok
+                                            Aktif</span>
                                         <span class="text-xs font-black text-emerald-500">1,402</span>
                                     </div>
                                 </div>
 
                                 <!-- Simulated Telegram Notif Overlay -->
-                                <div class="border border-cyan-500/30 bg-cyan-950/90 dark:bg-slate-950 text-white rounded-xl p-3 shadow-lg relative overflow-hidden animate-bounce">
-                                    <div class="absolute right-0 top-0 h-full w-2 bg-gradient-to-b from-cyan-400 to-cyan-600"></div>
+                                <div
+                                    class="border border-cyan-500/30 bg-cyan-950/90 dark:bg-slate-950 text-white rounded-xl p-3 shadow-lg relative overflow-hidden animate-bounce">
+                                    <div
+                                        class="absolute right-0 top-0 h-full w-2 bg-gradient-to-b from-cyan-400 to-cyan-600">
+                                    </div>
                                     <div class="flex gap-2">
-                                        <div class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400"><i class="fa-brands fa-telegram text-lg"></i></div>
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400">
+                                            <i class="fa-brands fa-telegram text-lg"></i>
+                                        </div>
                                         <div class="text-[10px] flex-1">
-                                            <p class="font-bold text-cyan-400">@NotifSellerMarketPBS_bot</p>
-                                            <p class="text-slate-200 mt-0.5 font-medium">🛍️ <strong class="text-white">Pesanan Baru Berhasil!</strong><br>1x Putra Btt Engine Pro • Rp 149.000<br>Status: Pembayaran Midtrans Selesai, Lisensi Terkirim via Email!</p>
+                                            <p class="font-bold text-cyan-400">@NotifTokoKlikVirtualBot</p>
+                                            <p class="text-slate-200 mt-0.5 font-medium">🛍️ <strong
+                                                    class="text-white">Pesanan Baru Berhasil!</strong><br>1x Lisensi
+                                                Premium • Rp 149.000<br>Status: Pembayaran Sukses, Produk Otomatis
+                                                Terkirim ke Email Pembeli!</p>
                                         </div>
                                     </div>
                                 </div>
 
                                 <!-- Action Buttons -->
-                                <div class="border border-slate-200 dark:border-slate-800 rounded-xl p-3 space-y-2 bg-slate-50/50 dark:bg-slate-950/10">
-                                    <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Quick Command</p>
+                                <div
+                                    class="border border-slate-200 dark:border-slate-800 rounded-xl p-3 space-y-2 bg-slate-50/50 dark:bg-slate-950/10">
+                                    <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Kelola Toko
+                                    </p>
                                     <div class="flex gap-2">
-                                        <button @click="triggerToast('Membuka modal tambah stok baru...')" class="flex-1 py-1.5 bg-brand-500 hover:bg-brand-600 text-white text-[9px] font-bold rounded-lg transition-colors">
-                                            + Tambah Stok Massal
+                                        <button @click="triggerToast('Membuka modal tambah stok baru...')"
+                                            class="flex-1 py-1.5 bg-brand-500 hover:bg-brand-600 text-white text-[9px] font-bold rounded-lg transition-colors">
+                                            + Tambah Stok
                                         </button>
-                                        <button @click="triggerToast('Menarik saldo penarikan...')" class="flex-1 py-1.5 bg-emerald-500 hover:bg-emerald-600 text-white text-[9px] font-bold rounded-lg transition-colors">
+                                        <button @click="triggerToast('Menarik saldo penarikan...')"
+                                            class="flex-1 py-1.5 bg-emerald-500 hover:bg-emerald-600 text-white text-[9px] font-bold rounded-lg transition-colors">
                                             Tarik Saldo <i class="fa-solid fa-wallet ml-1"></i>
                                         </button>
                                     </div>
@@ -407,84 +522,116 @@
     </section>
 
     <!-- Feature Section: Market Store -->
-    <section id="fitur-store" class="py-16 md:py-24 theme-transition border-t border-slate-200/50 dark:border-slate-900 bg-slate-100/40 dark:bg-slate-950/40">
+    <section id="fitur-store"
+        class="py-16 md:py-24 theme-transition border-t border-slate-200/50 dark:border-slate-900 bg-slate-100/40 dark:bg-slate-950/40">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
-                <span class="text-xs font-bold uppercase tracking-widest text-brand-500">Sisi Pembeli (Buyer Experience)</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Market Store: Belanja Instant Tanpa Hambatan</h2>
-                <p class="text-slate-600 dark:text-slate-300">Kami merancang etalase toko yang efisien, responsif, dan ringan untuk memastikan rasio konversi penjualan produk digital Anda meningkat tajam.</p>
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-500">Desain Toko Modern &amp;
+                    Responsif</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Halaman Toko Anda Sendiri:
+                    klikvirtual.id/namatoko</h2>
+                <p class="text-slate-600 dark:text-slate-300">Dapatkan website toko online instan siap pakai untuk
+                    jualan voucher, lisensi, software, game, ebook, atau produk digital lainnya secara praktis.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Feature Card 1 -->
-                <div class="theme-transition bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between hover:shadow-xl hover:border-brand-500/20 group">
+                <div
+                    class="theme-transition bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between hover:shadow-xl hover:border-brand-500/20 group">
                     <div class="space-y-4">
-                        <div class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-950/80 text-brand-500 flex items-center justify-center text-xl shadow-inner group-hover:scale-110 transition-transform">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-950/80 text-brand-500 flex items-center justify-center text-xl shadow-inner group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-globe"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Storefront Kustom Per Seller</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-300">Dapatkan domain eksklusif toko Anda sendiri di <code class="text-brand-500 font-bold">klikvirtual.id/[nama-toko]</code>. Bebas kustomisasi nama toko, profil, logo, deksripsi, hingga info WhatsApp pembeli.</p>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Halaman Toko Kustom</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-300">Dapatkan link toko online profesional
+                            sendiri. Bagikan link <code class="text-brand-500 font-bold">klikvirtual.id/namatoko</code>
+                            ke media sosial, pembeli bisa langsung melihat produk Anda.</p>
                     </div>
-                    <span class="block text-xs font-bold text-brand-500 mt-6 cursor-pointer">URL Toko Otomatis <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i></span>
+                    <span class="block text-xs font-bold text-brand-500 mt-6 cursor-pointer">Setup Instan Kurang Dari 5
+                        Menit <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i></span>
                 </div>
 
                 <!-- Feature Card 2 -->
-                <div class="theme-transition bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between hover:shadow-xl hover:border-brand-500/20 group">
+                <div
+                    class="theme-transition bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between hover:shadow-xl hover:border-brand-500/20 group">
                     <div class="space-y-4">
-                        <div class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-950/80 text-brand-500 flex items-center justify-center text-xl shadow-inner group-hover:scale-110 transition-transform">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-950/80 text-brand-500 flex items-center justify-center text-xl shadow-inner group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-qrcode"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Checkout QRIS Real-Time</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-300">Pembeli tidak perlu mendaftar berbelit-belit. Cukup masukkan email, klik Checkout, bayar QRIS Midtrans instan, dan sistem otomatis melepaskan stok digital detik itu juga.</p>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Pembayaran QRIS &amp; E-Wallet
+                            Otomatis</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-300">Pembeli bisa membayar dengan QRIS (Dana,
+                            OVO, GoPay, ShopeePay, LinkAja) atau M-Banking. Pembayaran terverifikasi otomatis dalam
+                            hitungan detik.</p>
                     </div>
-                    <span class="block text-xs font-bold text-brand-500 mt-6 cursor-pointer">Kredensial Auto-Kirim <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i></span>
+                    <span class="block text-xs font-bold text-brand-500 mt-6 cursor-pointer">Bebas Cek Mutasi Manual <i
+                            class="fa-solid fa-arrow-right ml-1 text-[10px]"></i></span>
                 </div>
 
                 <!-- Feature Card 3 -->
-                <div class="theme-transition bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between hover:shadow-xl hover:border-brand-500/20 group">
+                <div
+                    class="theme-transition bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between hover:shadow-xl hover:border-brand-500/20 group">
                     <div class="space-y-4">
-                        <div class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-950/80 text-brand-500 flex items-center justify-center text-xl shadow-inner group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-shield-halved"></i>
+                        <div
+                            class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-950/80 text-brand-500 flex items-center justify-center text-xl shadow-inner group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-gift"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Sertifikasi & Keamanan</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-300">Pendaftaran pembeli didukung hCaptcha terintegrasi guna meredam serangan bot spamming pendaftaran palsu. Sesi login terjaga ketat berkat HMAC-SHA256 cookie session.</p>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Bebas Biaya Bulanan &amp;
+                            Pendaftaran Gratis</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-300">Daftar gratis 100% tanpa biaya bulanan
+                            atau biaya tersembunyi. Anda hanya membayar biaya per transaksi yang sangat terjangkau saat
+                            berhasil menjual.</p>
                     </div>
-                    <span class="block text-xs font-bold text-brand-500 mt-6 cursor-pointer">Proteksi Spam Hacking <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i></span>
+                    <span class="block text-xs font-bold text-brand-500 mt-6 cursor-pointer">Pendaftaran 100% Gratis <i
+                            class="fa-solid fa-arrow-right ml-1 text-[10px]"></i></span>
                 </div>
             </div>
 
             <!-- Highlight Box: Real-Time Chat System Demonstration -->
-            <div class="mt-16 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-3xl p-6 lg:p-10 shadow-lg">
+            <div
+                class="mt-16 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-3xl p-6 lg:p-10 shadow-lg">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                     <div class="lg:col-span-5 space-y-4">
-                        <div class="inline-block bg-cyan-500/10 text-cyan-500 dark:text-cyan-300 text-xs font-extrabold px-3 py-1 rounded-full uppercase">
-                            <i class="fa-solid fa-comment-dots mr-1"></i> Live Chat Polling (3s)
+                        <div
+                            class="inline-block bg-cyan-500/10 text-cyan-500 dark:text-cyan-300 text-xs font-bold px-3 py-1 rounded-full uppercase">
+                            <i class="fa-solid fa-comment-dots mr-1"></i> Tanya Jawab Pelanggan
                         </div>
-                        <h3 class="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white leading-tight">Hubungkan Pembeli & Penjual Secara Real-Time</h3>
+                        <h3 class="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white leading-tight">Tanya
+                            Jawab Langsung Masuk ke Telegram Anda</h3>
                         <p class="text-sm text-slate-600 dark:text-slate-300">
-                            Fitur eksklusif KlikVirtual.ID memungkinkan pembeli melakukan obrolan langsung dari halaman produk atau toko. 
-                            Setiap pesan pertama dari pembeli akan <strong>memicu notifikasi otomatis ke bot Telegram penjual</strong> agar Anda tetap responsif membalas kapan saja, di mana saja.
+                            Pembeli dapat dengan mudah mengirim pesan langsung dari halaman toko Anda. Setiap pertanyaan
+                            pembeli akan otomatis diteruskan ke Telegram Anda secara instan, membuat Anda selalu
+                            terhubung dengan pembeli secara cepat dan praktis.
                         </p>
-                        <div class="flex items-center gap-2 pt-2 text-xs font-bold text-emerald-500 dark:text-emerald-400">
-                            <i class="fa-solid fa-check"></i> Pesan ter-forward ke Telegram otomatis
+                        <div
+                            class="flex items-center gap-2 pt-2 text-xs font-bold text-emerald-500 dark:text-emerald-400">
+                            <i class="fa-solid fa-check"></i> Pertanyaan diteruskan ke Telegram secara instan
                         </div>
                         <div class="flex items-center gap-2 text-xs font-bold text-emerald-500 dark:text-emerald-400">
-                            <i class="fa-solid fa-check"></i> Kemudahan membalas via web tanpa login manual
+                            <i class="fa-solid fa-check"></i> Balas dengan cepat langsung dari mana saja
                         </div>
                     </div>
 
                     <!-- Live Dynamic Chat Simulator -->
-                    <div class="lg:col-span-7 bg-slate-50 dark:bg-slate-950 p-4 sm:p-6 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between h-[360px] relative overflow-hidden">
+                    <div
+                        class="lg:col-span-7 bg-slate-50 dark:bg-slate-950 p-4 sm:p-6 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between h-[360px] relative overflow-hidden">
                         <!-- Chat Header -->
-                        <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3 mb-3">
+                        <div
+                            class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3 mb-3">
                             <div class="flex items-center gap-2">
-                                <div class="w-8 h-8 rounded-full bg-brand-500 text-white flex items-center justify-center font-bold text-xs">P</div>
+                                <div
+                                    class="w-8 h-8 rounded-full bg-brand-500 text-white flex items-center justify-center font-bold text-xs">
+                                    T</div>
                                 <div>
-                                    <h4 class="text-xs font-bold leading-none text-slate-900 dark:text-white">Putra Btt Store Support</h4>
+                                    <h4 class="text-xs font-bold leading-none text-slate-900 dark:text-white">Customer
+                                        Support Toko Anda</h4>
                                     <span class="text-[9px] text-slate-400">Live chat ID: KV-9824</span>
                                 </div>
                             </div>
-                            <span class="text-[9px] bg-emerald-500/10 text-emerald-500 dark:bg-emerald-950/50 dark:text-emerald-400 px-2 py-0.5 rounded-full font-bold">Online</span>
+                            <span
+                                class="text-[9px] bg-emerald-500/10 text-emerald-500 dark:bg-emerald-950/50 dark:text-emerald-400 px-2 py-0.5 rounded-full font-bold">Online</span>
                         </div>
 
                         <!-- Chat Threads -->
@@ -492,13 +639,14 @@
                             <template x-for="(msg, index) in simulatedMessages" :key="index">
                                 <div class="flex" :class="msg.sender === 'buyer' ? 'justify-end' : 'justify-start'">
                                     <div class="max-w-[80%] rounded-xl p-3 text-xs shadow-sm"
-                                         :class="msg.sender === 'buyer' 
+                                        :class="msg.sender === 'buyer' 
                                             ? 'bg-brand-500 text-white rounded-tr-none' 
                                             : (msg.sender === 'telegram' 
                                                 ? 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20 w-full rounded-lg text-center font-mono py-1.5' 
                                                 : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-100 rounded-tl-none')">
                                         <div x-html="msg.text"></div>
-                                        <span class="block text-[8px] text-right mt-1 opacity-70" x-text="msg.time"></span>
+                                        <span class="block text-[8px] text-right mt-1 opacity-70"
+                                            x-text="msg.time"></span>
                                     </div>
                                 </div>
                             </template>
@@ -506,8 +654,10 @@
 
                         <!-- Chat Bottom Control Box -->
                         <div class="mt-3 pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center gap-2">
-                            <input type="text" placeholder="Ketik balasan Anda..." disabled class="flex-1 bg-slate-200 dark:bg-slate-900 border-none text-[11px] p-2 rounded-lg cursor-not-allowed">
-                            <button class="bg-brand-500 text-white p-2 rounded-lg text-xs" disabled><i class="fa-solid fa-paper-plane"></i></button>
+                            <input type="text" placeholder="Ketik balasan Anda..." disabled
+                                class="flex-1 bg-slate-200 dark:bg-slate-950 border-none text-[11px] p-2 rounded-lg cursor-not-allowed">
+                            <button class="bg-brand-500 text-white p-2 rounded-lg text-xs" disabled><i
+                                    class="fa-solid fa-paper-plane"></i></button>
                         </div>
                     </div>
                 </div>
@@ -516,26 +666,35 @@
     </section>
 
     <!-- Feature Section: Market Dashboard -->
-    <section id="fitur-dashboard" class="py-16 md:py-24 theme-transition border-t border-slate-200/50 dark:border-slate-900 bg-white dark:bg-slate-950">
+    <section id="fitur-dashboard"
+        class="py-16 md:py-24 theme-transition border-t border-slate-200/50 dark:border-slate-900 bg-white dark:bg-slate-950">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
-                <span class="text-xs font-bold uppercase tracking-widest text-brand-500">Sisi Penjual (Seller Command Center)</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Market Dashboard: Kelola Bisnis dalam Satu Genggaman</h2>
-                <p class="text-slate-600 dark:text-slate-300">Ambil alih kendali sepenuhnya. Tidak ada lagi pencatatan manual, semua pesanan, riwayat saldo, penambahan stok, dan penarikan teratur rapi.</p>
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-500">Kelola Toko Mudah</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Dashboard Penjual: Kelola Semua Kebutuhan
+                    Toko</h2>
+                <p class="text-slate-600 dark:text-slate-300">Pantau semua aktivitas penjualan, tambah produk, isi stok,
+                    dan cairkan saldo pendapatan Anda dengan dashboard seller yang ramah pengguna.</p>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <!-- Left: Interactive Flow Graph -->
                 <div class="lg:col-span-6 space-y-6">
-                    <div class="border border-slate-200 dark:border-slate-800 p-5 rounded-3xl bg-slate-50 dark:bg-slate-900/40 space-y-4">
-                        <h4 class="text-xs font-extrabold uppercase tracking-widest text-slate-400">Arsitektur Otomasi KlikVirtual.ID</h4>
-                        
+                    <div
+                        class="border border-slate-200 dark:border-slate-800 p-5 rounded-3xl bg-slate-50 dark:bg-slate-900/40 space-y-4">
+                        <h4 class="text-xs font-extrabold uppercase tracking-widest text-slate-400">Cara Kerja Sistem
+                            Toko Otomatis</h4>
+
                         <!-- Flow Step 1 -->
                         <div class="flex items-start gap-3.5">
-                            <div class="w-8 h-8 rounded-full bg-brand-500 text-white flex items-center justify-center font-bold text-sm shrink-0">1</div>
+                            <div
+                                class="w-8 h-8 rounded-full bg-brand-500 text-white flex items-center justify-center font-bold text-sm shrink-0">
+                                1</div>
                             <div>
-                                <h5 class="text-sm font-bold text-slate-900 dark:text-white">Pembeli Checkout QRIS</h5>
-                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Integrasi Payment Gateway Midtrans memastikan pembayaran diverifikasi dalam 1 detik.</p>
+                                <h5 class="text-sm font-bold text-slate-900 dark:text-white">Pembeli Memilih &amp;
+                                    Membayar Produk</h5>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Pembeli memilih produk di
+                                    toko Anda dan membayar langsung lewat QRIS atau E-Wallet pilihan mereka.</p>
                             </div>
                         </div>
 
@@ -544,10 +703,15 @@
 
                         <!-- Flow Step 2 -->
                         <div class="flex items-start gap-3.5">
-                            <div class="w-8 h-8 rounded-full bg-brand-500 text-white flex items-center justify-center font-bold text-sm shrink-0">2</div>
+                            <div
+                                class="w-8 h-8 rounded-full bg-brand-500 text-white flex items-center justify-center font-bold text-sm shrink-0">
+                                2</div>
                             <div>
-                                <h5 class="text-sm font-bold text-slate-900 dark:text-white">Sistem Mengurangi Stok & Kirim Email</h5>
-                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Sistem memicu alokasi stok dari table <code class="text-brand-500 font-bold">market_product_items</code> dan mengirimkan email kredensial instan kepada pembeli.</p>
+                                <h5 class="text-sm font-bold text-slate-900 dark:text-white">Produk Dikirim Otomatis ke
+                                    Email</h5>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Sistem otomatis memproses
+                                    pesanan dan mengirimkan produk digital (lisensi, voucher, file, akun) langsung ke
+                                    email pembeli secepat kilat.</p>
                             </div>
                         </div>
 
@@ -556,10 +720,15 @@
 
                         <!-- Flow Step 3 -->
                         <div class="flex items-start gap-3.5">
-                            <div class="w-8 h-8 rounded-full bg-brand-500 text-white flex items-center justify-center font-bold text-sm shrink-0">3</div>
+                            <div
+                                class="w-8 h-8 rounded-full bg-brand-500 text-white flex items-center justify-center font-bold text-sm shrink-0">
+                                3</div>
                             <div>
-                                <h5 class="text-sm font-bold text-slate-900 dark:text-white">Bot Notifikasi Telegram Mengudara</h5>
-                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Bot @NotifSellerMarketPBS_bot mengirimkan laporan detail pesanan langsung ke akun Telegram penjual.</p>
+                                <h5 class="text-sm font-bold text-slate-900 dark:text-white">Notifikasi Penjualan Masuk
+                                    ke Telegram</h5>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Anda langsung menerima
+                                    laporan detail penjualan secara otomatis lewat bot notifikasi Telegram di handphone
+                                    Anda.</p>
                             </div>
                         </div>
                     </div>
@@ -569,26 +738,45 @@
                 <div class="lg:col-span-6 space-y-6">
                     <div class="space-y-4">
                         <div class="flex gap-4 items-start">
-                            <div class="w-10 h-10 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center text-sm shrink-0"><i class="fa-solid fa-list-ol"></i></div>
+                            <div
+                                class="w-10 h-10 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center text-sm shrink-0">
+                                <i class="fa-solid fa-list-ol"></i>
+                            </div>
                             <div>
-                                <h4 class="text-base font-bold text-slate-900 dark:text-white">Sistem Kelola Stok Satu Baris (Bulk Upload)</h4>
-                                <p class="text-sm text-slate-600 dark:text-slate-300">Menjual ribuan lisensi? Cukup paste semua lisensi atau voucher Anda (satu baris per item). Sistem akan menyimpannya dan mendistribusikannya secara bergantian setiap kali ada transaksi sukses.</p>
+                                <h4 class="text-base font-bold text-slate-900 dark:text-white">Upload Banyak Stok
+                                    Sekaligus</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-300">Punya banyak lisensi, voucher,
+                                    atau akun yang ingin dijual? Cukup masukkan semua data sekaligus di dashboard.
+                                    Sistem akan otomatis menyimpan dan membagikannya satu per satu ke pembeli setiap ada
+                                    transaksi.</p>
                             </div>
                         </div>
 
                         <div class="flex gap-4 items-start">
-                            <div class="w-10 h-10 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center text-sm shrink-0"><i class="fa-solid fa-wallet"></i></div>
+                            <div
+                                class="w-10 h-10 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center text-sm shrink-0">
+                                <i class="fa-solid fa-wallet"></i>
+                            </div>
                             <div>
-                                <h4 class="text-base font-bold text-slate-900 dark:text-white">Dompet Saldo & Penarikan Lancar</h4>
-                                <p class="text-sm text-slate-600 dark:text-slate-300">Semua hasil penjualan dikumpulkan di dalam saldo akun Anda. Ajukan penarikan saldo (withdraw) kapan saja dari dashboard, dana ditransfer ke rekening bank / e-wallet Anda.</p>
+                                <h4 class="text-base font-bold text-slate-900 dark:text-white">Pencairan Saldo Sangat
+                                    Mudah</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-300">Tarik saldo penjualan Anda ke
+                                    rekening bank atau e-wallet pilihan Anda kapan saja dengan proses penarikan dana
+                                    yang aman dan cepat.</p>
                             </div>
                         </div>
 
                         <div class="flex gap-4 items-start">
-                            <div class="w-10 h-10 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center text-sm shrink-0"><i class="fa-solid fa-bell"></i></div>
+                            <div
+                                class="w-10 h-10 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center text-sm shrink-0">
+                                <i class="fa-solid fa-bell"></i>
+                            </div>
                             <div>
-                                <h4 class="text-base font-bold text-slate-900 dark:text-white">Integrasi Bot Telegram Notifikasi Mandiri</h4>
-                                <p class="text-sm text-slate-600 dark:text-slate-300">Tidak perlu sering-sering membuka browser. Sambungkan Telegram Chat ID Anda sekali ke pengaturan toko, bot notifikasi akan terus melaporkan performa toko secara real-time.</p>
+                                <h4 class="text-base font-bold text-slate-900 dark:text-white">Laporan Penjualan
+                                    Real-Time di Telegram</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-300">Pantau penjualan Anda di mana saja
+                                    tanpa harus membuka website. Bot kami akan mengirimkan laporan real-time langsung ke
+                                    chat Telegram Anda setiap kali ada pesanan baru.</p>
                             </div>
                         </div>
                     </div>
@@ -598,24 +786,31 @@
     </section>
 
     <!-- Interactive Section: Revenue and Efficiency Calculator -->
-    <section id="simulasi-pendapatan" class="py-16 md:py-24 theme-transition border-t border-slate-200/50 dark:border-slate-900 bg-slate-100/40 dark:bg-slate-950/40">
+    <section id="simulasi-pendapatan"
+        class="py-16 md:py-24 theme-transition border-t border-slate-200/50 dark:border-slate-900 bg-slate-100/40 dark:bg-slate-950/40">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
-                <span class="text-xs font-bold uppercase tracking-widest text-brand-500">Estimasi Kalkulator Sukses</span>
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-500">Estimasi Kalkulator
+                    Sukses</span>
                 <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Hitung Efisiensi Penjualan Anda</h2>
-                <p class="text-slate-600 dark:text-slate-300">Cari tahu berapa banyak waktu kerja yang bisa Anda hemat dan proyeksi pendapatan Anda dengan otomasi penuh KlikVirtual.ID.</p>
+                <p class="text-slate-600 dark:text-slate-300">Cari tahu berapa banyak waktu kerja yang bisa Anda hemat
+                    dan proyeksi pendapatan Anda dengan otomasi penuh KlikVirtual.ID.</p>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
                 <!-- Sliders Controls (Col 7) -->
-                <div class="lg:col-span-7 bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-8 flex flex-col justify-center">
+                <div
+                    class="lg:col-span-7 bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-8 flex flex-col justify-center">
                     <!-- Slider 1 -->
                     <div class="space-y-3">
                         <div class="flex items-center justify-between">
-                            <label class="text-sm font-bold text-slate-700 dark:text-slate-300">Harga Rata-Rata Produk Digital</label>
-                            <span class="text-base font-extrabold text-brand-500" x-text="formatRupiah(calc.price)"></span>
+                            <label class="text-sm font-bold text-slate-700 dark:text-slate-300">Harga Rata-Rata Produk
+                                Digital</label>
+                            <span class="text-base font-extrabold text-brand-500"
+                                x-text="formatRupiah(calc.price)"></span>
                         </div>
-                        <input type="range" min="10000" max="500000" step="5000" x-model="calc.price" class="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-brand-500">
+                        <input type="range" min="10000" max="500000" step="5000" x-model="calc.price"
+                            class="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-brand-500">
                         <div class="flex justify-between text-[10px] text-slate-400">
                             <span>Rp 10.000</span>
                             <span>Rp 500.000</span>
@@ -625,10 +820,13 @@
                     <!-- Slider 2 -->
                     <div class="space-y-3">
                         <div class="flex items-center justify-between">
-                            <label class="text-sm font-bold text-slate-700 dark:text-slate-300">Estimasi Pesanan Per Bulan</label>
-                            <span class="text-base font-extrabold text-brand-500" x-text="calc.qty + ' Transaksi'"></span>
+                            <label class="text-sm font-bold text-slate-700 dark:text-slate-300">Estimasi Pesanan Per
+                                Bulan</label>
+                            <span class="text-base font-extrabold text-brand-500"
+                                x-text="calc.qty + ' Transaksi'"></span>
                         </div>
-                        <input type="range" min="20" max="2500" step="10" x-model="calc.qty" class="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-brand-500">
+                        <input type="range" min="20" max="2500" step="10" x-model="calc.qty"
+                            class="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-brand-500">
                         <div class="flex justify-between text-[10px] text-slate-400">
                             <span>20 Pesanan</span>
                             <span>2.500 Pesanan</span>
@@ -637,21 +835,25 @@
                 </div>
 
                 <!-- Results Panel (Col 5) -->
-                <div class="lg:col-span-5 bg-gradient-to-br from-brand-950 to-slate-950 text-white p-6 sm:p-8 rounded-3xl border border-slate-800 flex flex-col justify-between relative overflow-hidden">
+                <div
+                    class="lg:col-span-5 bg-gradient-to-br from-brand-950 to-slate-950 text-white p-6 sm:p-8 rounded-3xl border border-slate-800 flex flex-col justify-between relative overflow-hidden">
                     <div class="absolute -right-16 -top-16 w-36 h-36 bg-brand-500/10 rounded-full blur-xl"></div>
-                    
+
                     <div class="space-y-6 relative z-10">
-                        <h4 class="text-xs font-bold uppercase tracking-widest text-brand-500">Estimasi Hasil Bulanan</h4>
-                        
+                        <h4 class="text-xs font-bold uppercase tracking-widest text-brand-500">Estimasi Hasil Bulanan
+                        </h4>
+
                         <div>
                             <span class="text-xs text-slate-400 block">Proyeksi Pendapatan Kotor</span>
-                            <span class="text-3xl sm:text-4xl font-black text-white" x-text="formatRupiah(calc.price * calc.qty)"></span>
+                            <span class="text-3xl sm:text-4xl font-black text-white"
+                                x-text="formatRupiah(calc.price * calc.qty)"></span>
                         </div>
 
                         <div class="grid grid-cols-2 gap-4 pt-4 border-t border-slate-800">
                             <div>
                                 <span class="text-[11px] text-slate-400 block">Waktu Manual Dihemat</span>
-                                <span class="text-lg font-bold text-emerald-400" x-text="calcTimeSaved() + ' Jam'"></span>
+                                <span class="text-lg font-bold text-emerald-400"
+                                    x-text="calcTimeSaved() + ' Jam'"></span>
                                 <span class="text-[9px] text-slate-500 block">Asumsi 5 mnt / kirim manual</span>
                             </div>
                             <div>
@@ -663,10 +865,12 @@
                     </div>
 
                     <div class="pt-8 relative z-10">
-                        <a href="https://klikvirtual.id/" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 bg-brand-500 hover:bg-brand-600 text-white rounded-xl font-bold text-sm text-center block shadow-lg shadow-brand-500/20 active:scale-95 transition-all">
+                        <a href="https://seller.klikvirtual.id/register" target="_blank" rel="noopener noreferrer"
+                            class="w-full py-3.5 bg-brand-500 hover:bg-brand-600 text-white rounded-xl font-bold text-sm text-center block shadow-lg shadow-brand-500/20 active:scale-95 transition-all">
                             Daftarkan Toko Sekarang <i class="fa-solid fa-arrow-right ml-1"></i>
                         </a>
-                        <p class="text-[9px] text-slate-400 text-center mt-3 font-medium">Buka toko gratis, biaya layanan kompetitif per transaksi sukses.</p>
+                        <p class="text-[9px] text-slate-400 text-center mt-3 font-medium">Buka toko gratis, biaya
+                            layanan kompetitif per transaksi sukses.</p>
                     </div>
                 </div>
             </div>
@@ -674,18 +878,23 @@
     </section>
 
     <!-- Brand Value Proposition & Comparison Table -->
-    <section class="py-16 md:py-24 theme-transition border-t border-slate-200/50 dark:border-slate-900 bg-white dark:bg-slate-950">
+    <section
+        class="py-16 md:py-24 theme-transition border-t border-slate-200/50 dark:border-slate-900 bg-white dark:bg-slate-950">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
                 <span class="text-xs font-bold uppercase tracking-widest text-brand-500">Kenapa Harus Pindah?</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">Stop Jualan Manual Via Chat</h2>
-                <p class="text-slate-600 dark:text-slate-300">Berhentilah begadang hanya untuk membalas chat pembeli tengah malam guna mengirimkan kode voucher. KlikVirtual.ID menyelesaikan semuanya saat Anda tertidur lelap.</p>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">Stop
+                    Jualan Manual Via Chat</h2>
+                <p class="text-slate-600 dark:text-slate-300">Berhentilah begadang hanya untuk membalas chat pembeli
+                    tengah malam guna mengirimkan kode voucher. KlikVirtual.ID menyelesaikan semuanya saat Anda tertidur
+                    lelap.</p>
             </div>
 
             <!-- Comparison Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 <!-- Bad Way (Manual) -->
-                <div class="border border-slate-200 dark:border-slate-800 p-6 rounded-2xl bg-slate-50/50 dark:bg-slate-900/10 space-y-4">
+                <div
+                    class="border border-slate-200 dark:border-slate-800 p-6 rounded-2xl bg-slate-50/50 dark:bg-slate-900/10 space-y-4">
                     <div class="flex items-center gap-2 text-red-500">
                         <i class="fa-regular fa-circle-xmark text-lg"></i>
                         <h4 class="font-bold text-slate-950 dark:text-slate-100">Cara Manual Tradisional</h4>
@@ -693,26 +902,34 @@
                     <ul class="space-y-3.5 text-xs text-slate-600 dark:text-slate-400">
                         <li class="flex items-start gap-2.5">
                             <i class="fa-solid fa-xmark text-red-500 mt-0.5 shrink-0"></i>
-                            <span>Pembeli harus menunggu Anda online di WhatsApp hanya untuk meminta nomor rekening pembayaran.</span>
+                            <span>Pembeli harus menunggu Anda online di WhatsApp hanya untuk meminta nomor rekening
+                                pembayaran.</span>
                         </li>
                         <li class="flex items-start gap-2.5">
                             <i class="fa-solid fa-xmark text-red-500 mt-0.5 shrink-0"></i>
-                            <span>Anda wajib memvalidasi mutasi bank manual, rawan pancingan mutasi bank palsu atau penipuan bukti transfer.</span>
+                            <span>Anda wajib memvalidasi mutasi bank manual, rawan pancingan mutasi bank palsu atau
+                                penipuan bukti transfer.</span>
                         </li>
                         <li class="flex items-start gap-2.5">
                             <i class="fa-solid fa-xmark text-red-500 mt-0.5 shrink-0"></i>
-                            <span>Pengiriman manual satu per satu memakan waktu, sering typo/salah salin kredensial lisensi.</span>
+                            <span>Pengiriman manual satu per satu memakan waktu, sering typo/salah salin kredensial
+                                lisensi.</span>
                         </li>
                         <li class="flex items-start gap-2.5">
                             <i class="fa-solid fa-xmark text-red-500 mt-0.5 shrink-0"></i>
-                            <span>Stok habis tidak terkendali, pembeli komplain karena terlanjur bayar namun barang kosong.</span>
+                            <span>Stok habis tidak terkendali, pembeli komplain karena terlanjur bayar namun barang
+                                kosong.</span>
                         </li>
                     </ul>
                 </div>
 
                 <!-- Good Way (KlikVirtual) -->
-                <div class="border border-brand-500/20 p-6 rounded-2xl bg-brand-50/10 dark:bg-brand-950/10 space-y-4 relative overflow-hidden">
-                    <div class="absolute right-3 top-3 w-16 h-16 bg-brand-500/5 rounded-full flex items-center justify-center text-brand-500"><i class="fa-solid fa-bolt text-lg"></i></div>
+                <div
+                    class="border border-brand-500/20 p-6 rounded-2xl bg-brand-50/10 dark:bg-brand-950/10 space-y-4 relative overflow-hidden">
+                    <div
+                        class="absolute right-3 top-3 w-16 h-16 bg-brand-500/5 rounded-full flex items-center justify-center text-brand-500">
+                        <i class="fa-solid fa-bolt text-lg"></i>
+                    </div>
                     <div class="flex items-center gap-2 text-emerald-500">
                         <i class="fa-regular fa-circle-check text-lg"></i>
                         <h4 class="font-bold text-slate-950 dark:text-slate-100">Cara Otomatis KlikVirtual.ID</h4>
@@ -720,19 +937,23 @@
                     <ul class="space-y-3.5 text-xs text-slate-600 dark:text-slate-300">
                         <li class="flex items-start gap-2.5">
                             <i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i>
-                            <span>Pembeli langsung memindai QRIS Midtrans yang diproduksi otomatis oleh server 24 jam non-stop.</span>
+                            <span>Pembeli langsung memindai QRIS Midtrans yang diproduksi otomatis oleh server 24/7
+                                non-stop.</span>
                         </li>
                         <li class="flex items-start gap-2.5">
                             <i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i>
-                            <span>Pembayaran terverifikasi langsung oleh sistem API aman, tanpa risiko tipuan struk pembayaran.</span>
+                            <span>Pembayaran terverifikasi langsung oleh sistem API aman, tanpa risiko tipuan struk
+                                pembayaran.</span>
                         </li>
                         <li class="flex items-start gap-2.5">
                             <i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i>
-                            <span>Sistem seketika mengambil 1 baris stok di database, mengirimkannya ke email pembeli secepat kilat.</span>
+                            <span>Sistem seketika mengambil 1 baris stok di database, mengirimkannya ke email pembeli
+                                secepat kilat.</span>
                         </li>
                         <li class="flex items-start gap-2.5">
                             <i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i>
-                            <span>Informasi sisa stok terpampang transparan, sistem menolak order jika stok benar-benar kosong.</span>
+                            <span>Informasi sisa stok terpampang transparan, sistem menolak order jika stok benar-benar
+                                kosong.</span>
                         </li>
                     </ul>
                 </div>
@@ -741,91 +962,134 @@
     </section>
 
     <!-- Onboarding Step-by-step -->
-    <section id="cara-kerja" class="py-16 md:py-24 theme-transition border-t border-slate-200/50 dark:border-slate-900 bg-slate-100/40 dark:bg-slate-950/40">
+    <section id="cara-kerja"
+        class="py-16 md:py-24 theme-transition border-t border-slate-200/50 dark:border-slate-900 bg-slate-100/40 dark:bg-slate-950/40">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
                 <span class="text-xs font-bold uppercase tracking-widest text-brand-500">Langkah Memulai</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Hanya Butuh 3 Langkah Untuk Buka Toko</h2>
-                <p class="text-slate-600 dark:text-slate-300">Sangat mudah dikonfigurasi bahkan bagi pemula sekalipun. Mulailah dalam hitungan menit saja.</p>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Hanya Butuh 3 Langkah Untuk Buka Toko
+                </h2>
+                <p class="text-slate-600 dark:text-slate-300">Sangat mudah dikonfigurasi bahkan bagi pemula sekalipun.
+                    Mulailah dalam hitungan menit saja.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Step 1 -->
-                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 text-center relative group">
-                    <span class="absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-brand-500 text-white flex items-center justify-center font-bold shadow-md shadow-brand-500/20">1</span>
+                <div
+                    class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 text-center relative group">
+                    <span
+                        class="absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-brand-500 text-white flex items-center justify-center font-bold shadow-md shadow-brand-500/20">1</span>
                     <h4 class="text-base font-bold text-slate-950 dark:text-white mt-4">Buat Akun Seller</h4>
-                    <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">Daftarkan diri Anda di dashboard seller. Konfigurasi alamat slug kustom Anda, upload logo toko, serta masukkan tautan WA.</p>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">Daftarkan diri Anda di dashboard seller.
+                        Konfigurasi alamat slug kustom Anda, upload logo toko, serta masukkan tautan WA.</p>
                 </div>
 
                 <!-- Step 2 -->
-                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 text-center relative group">
-                    <span class="absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-brand-500 text-white flex items-center justify-center font-bold shadow-md shadow-brand-500/20">2</span>
+                <div
+                    class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 text-center relative group">
+                    <span
+                        class="absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-brand-500 text-white flex items-center justify-center font-bold shadow-md shadow-brand-500/20">2</span>
                     <h4 class="text-base font-bold text-slate-950 dark:text-white mt-4">Masukkan Produk & Stok</h4>
-                    <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">Buat produk digital baru, isi rincian harga, lalu upload file lisensi atau voucher secara bulk (satu baris per stok barang).</p>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">Buat produk digital baru, isi rincian
+                        harga, lalu upload file lisensi atau voucher secara bulk (satu baris per stok barang).</p>
                 </div>
 
                 <!-- Step 3 -->
-                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 text-center relative group">
-                    <span class="absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-brand-500 text-white flex items-center justify-center font-bold shadow-md shadow-brand-500/20">3</span>
+                <div
+                    class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 text-center relative group">
+                    <span
+                        class="absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-brand-500 text-white flex items-center justify-center font-bold shadow-md shadow-brand-500/20">3</span>
                     <h4 class="text-base font-bold text-slate-950 dark:text-white mt-4">Hubungkan Notifikasi Bot</h4>
-                    <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">Tekan <code class="text-brand-500 font-bold">/start</code> di telegram bot resmi kami untuk mendapatkan Chat ID, pasang di profil toko dan Anda siap berbisnis secara otomatis!</p>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">Tekan <code
+                            class="text-brand-500 font-bold">/start</code> di telegram bot resmi kami untuk mendapatkan
+                        Chat ID, pasang di profil toko dan Anda siap berbisnis secara otomatis!</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq" class="py-16 md:py-24 theme-transition border-t border-slate-200/50 dark:border-slate-900 bg-white dark:bg-slate-950" x-data="{ activeFaq: null }">
+    <section id="faq"
+        class="py-16 md:py-24 theme-transition border-t border-slate-200/50 dark:border-slate-900 bg-white dark:bg-slate-950"
+        x-data="{ activeFaq: null }">
         <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
                 <span class="text-xs font-bold uppercase tracking-widest text-brand-500">Butuh Jawaban?</span>
                 <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Pertanyaan yang Sering Diajukan</h2>
-                <p class="text-slate-600 dark:text-slate-300">Kami mengumpulkan pertanyaan mendasar dari pembeli dan seller seputar fungsionalitas KlikVirtual.ID.</p>
+                <p class="text-slate-600 dark:text-slate-300">Kami mengumpulkan pertanyaan mendasar dari pembeli dan
+                    seller seputar fungsionalitas KlikVirtual.ID.</p>
             </div>
 
             <!-- Accordions -->
             <div class="space-y-4">
                 <!-- FAQ 1 -->
                 <div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden transition-all">
-                    <button @click="activeFaq === 1 ? activeFaq = null : activeFaq = 1" class="w-full text-left p-5 font-bold text-sm sm:text-base flex justify-between items-center bg-slate-50 dark:bg-slate-900/40 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">
+                    <button @click="activeFaq === 1 ? activeFaq = null : activeFaq = 1"
+                        class="w-full text-left p-5 font-bold text-sm sm:text-base flex justify-between items-center bg-slate-50 dark:bg-slate-900/40 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">
                         <span>Bagaimana sistem pembayaran QRIS di KlikVirtual.ID bekerja?</span>
-                        <i class="fa-solid transition-transform duration-200" :class="activeFaq === 1 ? 'fa-chevron-up text-brand-500' : 'fa-chevron-down'"></i>
+                        <i class="fa-solid transition-transform duration-200"
+                            :class="activeFaq === 1 ? 'fa-chevron-up text-brand-500' : 'fa-chevron-down'"></i>
                     </button>
-                    <div x-show="activeFaq === 1" x-transition class="p-5 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-2">
-                        <p>Kami bermitra dengan Payment Gateway Midtrans. Ketika pembeli menekan checkout, server memanggil API Midtrans untuk membuat QRIS unik yang berlaku real-time. Begitu pembeli membayar via aplikasi e-wallet apa pun, Midtrans mengirimkan notifikasi callback ke server KlikVirtual.ID, dan sistem langsung memproses pengiriman produk tanpa campur tangan admin.</p>
+                    <div x-show="activeFaq === 1" x-transition
+                        class="p-5 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-2">
+                        <p>Kami bermitra dengan Payment Gateway Midtrans. Ketika pembeli menekan checkout, server
+                            memanggil API Midtrans untuk membuat QRIS unik yang berlaku real-time. Begitu pembeli
+                            membayar via aplikasi e-wallet apa pun, Midtrans mengirimkan notifikasi callback ke server
+                            KlikVirtual.ID, dan sistem langsung memproses pengiriman produk tanpa campur tangan admin.
+                        </p>
                     </div>
                 </div>
 
                 <!-- FAQ 2 -->
                 <div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden transition-all">
-                    <button @click="activeFaq === 2 ? activeFaq = null : activeFaq = 2" class="w-full text-left p-5 font-bold text-sm sm:text-base flex justify-between items-center bg-slate-50 dark:bg-slate-900/40 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">
+                    <button @click="activeFaq === 2 ? activeFaq = null : activeFaq = 2"
+                        class="w-full text-left p-5 font-bold text-sm sm:text-base flex justify-between items-center bg-slate-50 dark:bg-slate-900/40 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">
                         <span>Bagaimana format stok digital untuk bulk upload?</span>
-                        <i class="fa-solid transition-transform duration-200" :class="activeFaq === 2 ? 'fa-chevron-up text-brand-500' : 'fa-chevron-down'"></i>
+                        <i class="fa-solid transition-transform duration-200"
+                            :class="activeFaq === 2 ? 'fa-chevron-up text-brand-500' : 'fa-chevron-down'"></i>
                     </button>
-                    <div x-show="activeFaq === 2" x-transition class="p-5 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-2">
-                        <p>Format stok produk digital di KlikVirtual sangat fleksibel. Gunakan baris baru untuk memisahkan item (satu baris mewakili satu stok). Jika Anda ingin memasukkan informasi multi-kolom seperti (Username || Password || Token) di dalam satu baris, Anda dapat menggunakan pemisah dobel pipa (<code class="text-brand-500 font-bold">||</code>). Sistem akan otomatis menerjemahkan pemisah tersebut sebagai baris baru yang rapi saat email pengiriman diterima pembeli.</p>
+                    <div x-show="activeFaq === 2" x-transition
+                        class="p-5 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-2">
+                        <p>Format stok produk digital di KlikVirtual sangat fleksibel. Gunakan baris baru untuk
+                            memisahkan item (satu baris mewakili satu stok). Jika Anda ingin memasukkan informasi
+                            multi-kolom seperti (Username || Password || Token) di dalam satu baris, Anda dapat
+                            menggunakan pemisah dobel pipa (<code class="text-brand-500 font-bold">||</code>). Sistem
+                            akan otomatis menerjemahkan pemisah tersebut sebagai baris baru yang rapi saat email
+                            pengiriman diterima pembeli.</p>
                     </div>
                 </div>
 
                 <!-- FAQ 3 -->
                 <div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden transition-all">
-                    <button @click="activeFaq === 3 ? activeFaq = null : activeFaq = 3" class="w-full text-left p-5 font-bold text-sm sm:text-base flex justify-between items-center bg-slate-50 dark:bg-slate-900/40 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">
+                    <button @click="activeFaq === 3 ? activeFaq = null : activeFaq = 3"
+                        class="w-full text-left p-5 font-bold text-sm sm:text-base flex justify-between items-center bg-slate-50 dark:bg-slate-900/40 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">
                         <span>Apakah aman dari pembeli palsu / scammer pendaftaran?</span>
-                        <i class="fa-solid transition-transform duration-200" :class="activeFaq === 3 ? 'fa-chevron-up text-brand-500' : 'fa-chevron-down'"></i>
+                        <i class="fa-solid transition-transform duration-200"
+                            :class="activeFaq === 3 ? 'fa-chevron-up text-brand-500' : 'fa-chevron-down'"></i>
                     </button>
-                    <div x-show="activeFaq === 3" x-transition class="p-5 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-2">
-                        <p>Sangat aman! Formulir registrasi di Market Store kami batasi dengan perlindungan hCaptcha terintegrasi untuk menangkal serangan bot registrasi otomatis. Selain itu, kami menerapkan sistem Rate Limiting ketat pada server API otentikasi serta enkripsi HMAC-SHA256 yang tangguh untuk mendeteksi pembajakan session kuki.</p>
+                    <div x-show="activeFaq === 3" x-transition
+                        class="p-5 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-2">
+                        <p>Sangat aman! Formulir registrasi di Market Store kami batasi dengan perlindungan hCaptcha
+                            terintegrasi untuk menangkal serangan bot registrasi otomatis. Selain itu, kami menerapkan
+                            sistem Rate Limiting ketat pada server API otentikasi serta enkripsi HMAC-SHA256 yang
+                            tangguh untuk mendeteksi pembajakan session kuki.</p>
                     </div>
                 </div>
 
                 <!-- FAQ 4 -->
                 <div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden transition-all">
-                    <button @click="activeFaq === 4 ? activeFaq = null : activeFaq = 4" class="w-full text-left p-5 font-bold text-sm sm:text-base flex justify-between items-center bg-slate-50 dark:bg-slate-900/40 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">
+                    <button @click="activeFaq === 4 ? activeFaq = null : activeFaq = 4"
+                        class="w-full text-left p-5 font-bold text-sm sm:text-base flex justify-between items-center bg-slate-50 dark:bg-slate-900/40 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">
                         <span>Bagaimana cara mencairkan dana hasil penjualan?</span>
-                        <i class="fa-solid transition-transform duration-200" :class="activeFaq === 4 ? 'fa-chevron-up text-brand-500' : 'fa-chevron-down'"></i>
+                        <i class="fa-solid transition-transform duration-200"
+                            :class="activeFaq === 4 ? 'fa-chevron-up text-brand-500' : 'fa-chevron-down'"></i>
                     </button>
-                    <div x-show="activeFaq === 4" x-transition class="p-5 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-2">
-                        <p>Setiap penjualan yang berhasil diselesaikan akan otomatis menambah saldo di Market Dashboard Anda. Penjual dapat mengajukan penarikan saldo (withdraw) langsung dari menu saldo di dashboard. Penarikan akan diverifikasi oleh sistem administrasi pusat dan ditransfer ke rekening bank / e-wallet Anda yang terdaftar dalam waktu cepat.</p>
+                    <div x-show="activeFaq === 4" x-transition
+                        class="p-5 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-2">
+                        <p>Setiap penjualan yang berhasil diselesaikan akan otomatis menambah saldo di Market Dashboard
+                            Anda. Penjual dapat mengajukan penarikan saldo (withdraw) langsung dari menu saldo di
+                            dashboard. Penarikan akan diverifikasi oleh sistem administrasi pusat dan ditransfer ke
+                            rekening bank / e-wallet Anda yang terdaftar dalam waktu cepat.</p>
                     </div>
                 </div>
             </div>
@@ -833,48 +1097,60 @@
     </section>
 
     <!-- Direct High-Impact Onboarding Form Section with requested bg-gradient-to-br from-primary-600 via-primary-700 to-indigo-800 pt-6 pb-10 -->
-    <section id="mulai-gabung" class="relative overflow-hidden bg-gradient-to-br from-primary-600 via-primary-700 to-indigo-800 pt-16 pb-20 text-white">
+    <section id="mulai-gabung"
+        class="relative overflow-hidden bg-gradient-to-br from-primary-600 via-primary-700 to-indigo-800 pt-16 pb-20 text-white">
         <!-- Ambient vector blobs inside gradient for texture -->
-        <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
+        <div
+            class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none">
+        </div>
         <div class="absolute top-10 right-10 w-96 h-96 bg-white/5 rounded-full blur-3xl pointer-events-none"></div>
 
         <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-8">
             <div class="max-w-2xl mx-auto space-y-4">
                 <span class="text-xs font-bold uppercase tracking-widest text-cyan-300">Bergabung Bersama Kami</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Siap Melangkah Ke Era Penjualan Otomatis?</h2>
-                <p class="text-indigo-100 text-sm sm:text-base">Bergabunglah bersama ratusan seller lisensi digital lainnya di KlikVirtual.ID. Ciptakan efisiensi operasional tanpa henti untuk memaksimalkan margin keuntungan Anda.</p>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Siap Melangkah Ke Era Penjualan Otomatis?
+                </h2>
+                <p class="text-indigo-100 text-sm sm:text-base">Bergabunglah bersama ratusan seller lisensi digital
+                    lainnya di KlikVirtual.ID. Ciptakan efisiensi operasional tanpa henti untuk memaksimalkan margin
+                    keuntungan Anda.</p>
             </div>
 
             <!-- Direct CTA Action Button Card -->
-            <div class="max-w-md mx-auto bg-white dark:bg-slate-900 p-8 rounded-3xl border border-white/10 dark:border-slate-800/80 shadow-2xl space-y-6 text-slate-800 dark:text-slate-100">
+            <div
+                class="max-w-md mx-auto bg-white dark:bg-slate-900 p-8 rounded-3xl border border-white/10 dark:border-slate-800/80 shadow-2xl space-y-6 text-slate-800 dark:text-slate-100">
                 <div class="space-y-2">
-                    <div class="w-12 h-12 rounded-2xl bg-brand-500/10 text-brand-500 flex items-center justify-center text-xl mx-auto">
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-brand-500/10 text-brand-500 flex items-center justify-center text-xl mx-auto">
                         <i class="fa-solid fa-rocket animate-bounce"></i>
                     </div>
                     <h4 class="text-lg font-bold text-slate-900 dark:text-white">Mulai Bangun Toko Digital Anda</h4>
                     <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed text-center">
-                        Nikmati kemudahan pengelolaan stok otomatis, notifikasi Telegram real-time, dan pembayaran instan terverifikasi 24/7 di KlikVirtual.
+                        Nikmati kemudahan pengelolaan stok otomatis, notifikasi Telegram real-time, dan pembayaran
+                        instan terverifikasi 24/7 di KlikVirtual.
                     </p>
                 </div>
 
-                <a href="https://klikvirtual.id/" target="_blank" rel="noopener noreferrer" 
-                   class="w-full py-4 bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm rounded-xl shadow-lg shadow-brand-500/25 transition-all flex items-center justify-center gap-2 transform hover:-translate-y-0.5 active:translate-y-0">
+                <a href="https://seller.klikvirtual.id/register" target="_blank" rel="noopener noreferrer"
+                    class="w-full py-4 bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm rounded-xl shadow-lg shadow-brand-500/25 transition-all flex items-center justify-center gap-2 transform hover:-translate-y-0.5 active:translate-y-0">
                     Mulai Jualan Sekarang <i class="fa-solid fa-arrow-right"></i>
                 </a>
 
                 <!-- Hubungi Admin Live Support Banner -->
                 <div class="pt-5 border-t border-slate-100 dark:border-slate-800/80 text-left">
-                    <p class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 text-center mb-3">Butuh Bantuan? Hubungi Admin</p>
+                    <p class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 text-center mb-3">Butuh
+                        Bantuan? Hubungi Admin</p>
                     <div class="flex flex-col sm:flex-row gap-2 justify-center items-center">
-                        <a href="https://wa.me/6282340915319" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 dark:bg-emerald-950/30 dark:text-emerald-300 border border-emerald-200/50 dark:border-emerald-900/30 text-xs font-semibold transition-all">
+                        <a href="https://wa.me/6282340915319" target="_blank"
+                            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 dark:bg-emerald-950/30 dark:text-emerald-300 border border-emerald-200/50 dark:border-emerald-900/30 text-xs font-semibold transition-all">
                             <i class="fa-brands fa-whatsapp text-base text-emerald-500"></i> WhatsApp: 082340915319
                         </a>
-                        <a href="https://t.me/aryadwinata543" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-sky-50 hover:bg-sky-100 text-sky-800 dark:bg-sky-950/30 dark:text-sky-300 border border-sky-200/50 dark:border-sky-900/30 text-xs font-semibold transition-all">
+                        <a href="https://t.me/aryadwinata543" target="_blank"
+                            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-sky-50 hover:bg-sky-100 text-sky-800 dark:bg-sky-950/30 dark:text-sky-300 border border-sky-200/50 dark:border-sky-900/30 text-xs font-semibold transition-all">
                             <i class="fa-brands fa-telegram text-base text-sky-500"></i> Telegram: @aryadwinata543
                         </a>
                     </div>
                 </div>
-                
+
                 <div class="flex items-center justify-center gap-4 text-[10px] text-slate-400 font-medium pt-2">
                     <span><i class="fa-solid fa-check text-emerald-500 mr-1"></i> Tanpa Biaya Bulanan</span>
                     <span>•</span>
@@ -891,21 +1167,25 @@
                 <!-- Col 1: Brand with specific logo and brand name preserved -->
                 <div class="space-y-4 md:col-span-1">
                     <a href="#" class="flex items-center gap-2 group">
-                        <img src="https://putrabttstore.web.id/Logo%20Klik%20Virtual.png" 
-                             alt="KlikVirtual.ID Logo" 
-                             class="w-8 h-8 object-contain rounded-lg"
-                             onerror="this.onerror=null; this.src='https://placehold.co/32x32/0284c7/ffffff?text=KV';">
-                        <span class="text-base font-extrabold tracking-tight text-slate-900 dark:text-white">KlikVirtual<span class="text-brand-500">.ID</span></span>
+                        <img src="https://putrabttstore.web.id/Logo%20Klik%20Virtual.png" alt="KlikVirtual.ID Logo"
+                            class="w-8 h-8 object-contain rounded-lg"
+                            onerror="this.onerror=null; this.src='https://placehold.co/32x32/0284c7/ffffff?text=KV';">
+                        <span
+                            class="text-base font-extrabold tracking-tight text-slate-900 dark:text-white">KlikVirtual<span
+                                class="text-brand-500">.ID</span></span>
                     </a>
-                    <p class="text-[11px] text-slate-500 dark:text-slate-400">Ekosistem marketplace multi-seller produk digital tercepat, termudah, dan terotomatisasi di Indonesia. Bagian dari PBS Digital Store.</p>
-                    
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400">Ekosistem marketplace multi-seller produk
+                        digital tercepat, termudah, dan terotomatisasi di Indonesia. Bagian dari PBS Digital Store.</p>
+
                     <!-- Admin Contact Info under logo -->
                     <div class="space-y-2 pt-3 border-t border-slate-100 dark:border-slate-800/60">
                         <p class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">Hubungi Kami</p>
-                        <a href="https://wa.me/6282340915319" target="_blank" class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400 hover:text-brand-500 transition-colors">
+                        <a href="https://wa.me/6282340915319" target="_blank"
+                            class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400 hover:text-brand-500 transition-colors">
                             <i class="fa-brands fa-whatsapp text-emerald-500 text-sm"></i> WhatsApp: 082340915319
                         </a>
-                        <a href="https://t.me/aryadwinata543" target="_blank" class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400 hover:text-brand-500 transition-colors">
+                        <a href="https://t.me/aryadwinata543" target="_blank"
+                            class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400 hover:text-brand-500 transition-colors">
                             <i class="fa-brands fa-telegram text-sky-500 text-sm"></i> Telegram: @aryadwinata543
                         </a>
                     </div>
@@ -946,14 +1226,19 @@
             </div>
 
             <!-- Footer Bottom -->
-            <div class="border-t border-slate-200 dark:border-slate-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+            <div
+                class="border-t border-slate-200 dark:border-slate-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
                 <p>© 2026 KlikVirtual.ID. All rights reserved. Part of PBS Digital Store Ecosystem.</p>
                 <!-- Social media -->
                 <div class="flex items-center gap-4 text-base">
-                    <a href="#" class="hover:text-brand-500 transition-colors" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#" class="hover:text-brand-500 transition-colors" aria-label="Twitter/X"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="#" class="hover:text-brand-500 transition-colors" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
-                    <a href="#" class="hover:text-brand-500 transition-colors" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" class="hover:text-brand-500 transition-colors" aria-label="Facebook"><i
+                            class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="hover:text-brand-500 transition-colors" aria-label="Twitter/X"><i
+                            class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="hover:text-brand-500 transition-colors" aria-label="Telegram"><i
+                            class="fa-brands fa-telegram"></i></a>
+                    <a href="#" class="hover:text-brand-500 transition-colors" aria-label="WhatsApp"><i
+                            class="fa-brands fa-whatsapp"></i></a>
                 </div>
             </div>
         </div>
@@ -999,7 +1284,7 @@
                 initSimulations() {
                     // Load the first message on start
                     this.simulatedMessages.push(this.allSimulatedDialogues[0]);
-                    
+
                     // Set loop to add messages progressively
                     setInterval(() => {
                         this.currentDialogueIndex++;
@@ -1009,7 +1294,7 @@
                             this.currentDialogueIndex = 0;
                         } else {
                             this.simulatedMessages.push(this.allSimulatedDialogues[this.currentDialogueIndex]);
-                            
+
                             // Scroll down simulated chat
                             this.$nextTick(() => {
                                 const container = document.getElementById('chat-simulation-container');
@@ -1040,4 +1325,5 @@
         }
     </script>
 </body>
+
 </html>
