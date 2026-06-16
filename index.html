@@ -24,23 +24,24 @@
                     },
                     colors: {
                         brand: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            500: '#0284c7', // KlikVirtual Premium Blue
-                            600: '#0369a1',
-                            700: '#075985',
-                            950: '#031b2e',
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            500: '#5850ec', // KlikVirtual Brand Purple
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            950: '#130f26',
                         },
                         // Mapping user's brand primary spectrum to match official colors
                         primary: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            200: '#bae6fd',
-                            500: '#0284c7', // KlikVirtual ID Primary Blue
-                            600: '#0369a1', // Medium Dark Blue
-                            700: '#075985', // Dark Blue
-                            800: '#0c4a6e',
-                            900: '#031b2e',
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            500: '#5850ec', // KlikVirtual ID Primary Purple
+                            600: '#4f46e5', // Medium Dark Indigo
+                            700: '#4338ca', // Dark Indigo
+                            800: '#3730a3',
+                            900: '#130f26',
                         },
                         cyber: {
                             teal: '#14b8a6',
@@ -93,7 +94,7 @@
 
         /* Subtle glow for professional element accentuation */
         .premium-glow {
-            box-shadow: 0 0 25px -5px rgba(2, 132, 199, 0.15);
+            box-shadow: 0 0 25px -5px rgba(88, 80, 236, 0.15);
         }
 
         /* Custom soft animations */
@@ -395,8 +396,8 @@
                                     <div class="flex items-center gap-2">
                                         <span class="relative flex h-2 w-2">
                                             <span
-                                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-                                            <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+                                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
+                                            <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
                                         </span>
                                         <div class="text-[11px]">
                                             <p class="font-bold text-slate-900 dark:text-white leading-none">Hubungi
@@ -407,7 +408,7 @@
                                     </div>
                                     <button
                                         @click="currentMockup = 'dashboard'; triggerToast('Membuka dashboard demo penjual.')"
-                                        class="bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-500 dark:text-cyan-300 font-bold text-[10px] px-2.5 py-1.5 rounded-md transition-colors">
+                                        class="bg-brand-500/10 hover:bg-brand-500/20 text-brand-600 dark:text-brand-300 font-bold text-[10px] px-2.5 py-1.5 rounded-md transition-colors">
                                         Kirim Pesan
                                     </button>
                                 </div>
@@ -478,17 +479,17 @@
 
                                 <!-- Simulated Telegram Notif Overlay -->
                                 <div
-                                    class="border border-cyan-500/30 bg-cyan-950/90 dark:bg-slate-950 text-white rounded-xl p-3 shadow-lg relative overflow-hidden animate-bounce">
+                                    class="border border-brand-500/30 bg-brand-950/90 dark:bg-slate-950 text-white rounded-xl p-3 shadow-lg relative overflow-hidden animate-bounce">
                                     <div
-                                        class="absolute right-0 top-0 h-full w-2 bg-gradient-to-b from-cyan-400 to-cyan-600">
+                                        class="absolute right-0 top-0 h-full w-2 bg-gradient-to-b from-brand-400 to-brand-600">
                                     </div>
                                     <div class="flex gap-2">
                                         <div
-                                            class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400">
+                                            class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-brand-400">
                                             <i class="fa-brands fa-telegram text-lg"></i>
                                         </div>
                                         <div class="text-[10px] flex-1">
-                                            <p class="font-bold text-cyan-400">@NotifTokoKlikVirtualBot</p>
+                                            <p class="font-bold text-brand-400">@NotifTokoKlikVirtualBot</p>
                                             <p class="text-slate-200 mt-0.5 font-medium">🛍️ <strong
                                                     class="text-white">Pesanan Baru Berhasil!</strong><br>1x Lisensi
                                                 Premium • Rp 149.000<br>Status: Pembayaran Sukses, Produk Otomatis
@@ -635,19 +636,31 @@
                         </div>
 
                         <!-- Chat Threads -->
-                        <div class="flex-1 overflow-y-auto space-y-3.5 px-1 py-1" id="chat-simulation-container">
+                        <div class="flex-1 overflow-y-auto space-y-3 px-1 py-1" id="chat-simulation-container">
                             <template x-for="(msg, index) in simulatedMessages" :key="index">
-                                <div class="flex" :class="msg.sender === 'buyer' ? 'justify-end' : 'justify-start'">
-                                    <div class="max-w-[80%] rounded-xl p-3 text-xs shadow-sm"
-                                        :class="msg.sender === 'buyer' 
-                                            ? 'bg-brand-500 text-white rounded-tr-none' 
-                                            : (msg.sender === 'telegram' 
-                                                ? 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20 w-full rounded-lg text-center font-mono py-1.5' 
-                                                : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-100 rounded-tl-none')">
-                                        <div x-html="msg.text"></div>
-                                        <span class="block text-[8px] text-right mt-1 opacity-70"
-                                            x-text="msg.time"></span>
-                                    </div>
+                                <div class="w-full">
+                                    <!-- Telegram status block layout (centered, full width) -->
+                                    <template x-if="msg.sender === 'telegram'">
+                                        <div class="w-full flex justify-center my-2">
+                                            <div class="bg-indigo-50/80 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-300 border border-indigo-200/50 dark:border-indigo-800/40 w-full rounded-xl p-3 text-xs font-mono text-center shadow-sm">
+                                                <div x-html="msg.text"></div>
+                                                <span class="block text-[8px] opacity-70 mt-1" x-text="msg.time"></span>
+                                            </div>
+                                        </div>
+                                    </template>
+                                    
+                                    <!-- Regular buyer/seller chat bubble layout -->
+                                    <template x-if="msg.sender !== 'telegram'">
+                                        <div class="flex my-1" :class="msg.sender === 'buyer' ? 'justify-end' : 'justify-start'">
+                                            <div class="max-w-[80%] rounded-xl p-3 text-xs shadow-sm"
+                                                :class="msg.sender === 'buyer' 
+                                                    ? 'bg-brand-500 text-white rounded-tr-none' 
+                                                    : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-100 rounded-tl-none'">
+                                                <div x-html="msg.text"></div>
+                                                <span class="block text-[8px] text-right mt-1 opacity-70" x-text="msg.time"></span>
+                                            </div>
+                                        </div>
+                                    </template>
                                 </div>
                             </template>
                         </div>
@@ -844,7 +857,7 @@
                         </h4>
 
                         <div>
-                            <span class="text-xs text-slate-400 block">Proyeksi Pendapatan Kotor</span>
+                            <span class="text-xs text-slate-400 block">Proyeksi Omset Bulanan Anda</span>
                             <span class="text-3xl sm:text-4xl font-black text-white"
                                 x-text="formatRupiah(calc.price * calc.qty)"></span>
                         </div>
@@ -857,9 +870,9 @@
                                 <span class="text-[9px] text-slate-500 block">Asumsi 5 mnt / kirim manual</span>
                             </div>
                             <div>
-                                <span class="text-[11px] text-slate-400 block">Beban Server</span>
-                                <span class="text-lg font-bold text-cyan-400">Rp 0</span>
-                                <span class="text-[9px] text-slate-500 block">Ditanggung KlikVirtual</span>
+                                <span class="text-[11px] text-slate-400 block">Biaya Server &amp; Hosting</span>
+                                <span class="text-lg font-bold text-brand-400">Rp 0</span>
+                                <span class="text-[9px] text-slate-500 block">Ditanggung 100% Oleh Kami</span>
                             </div>
                         </div>
                     </div>
@@ -937,23 +950,19 @@
                     <ul class="space-y-3.5 text-xs text-slate-600 dark:text-slate-300">
                         <li class="flex items-start gap-2.5">
                             <i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i>
-                            <span>Pembeli langsung memindai QRIS Midtrans yang diproduksi otomatis oleh server 24/7
-                                non-stop.</span>
+                            <span>Pembayaran otomatis via QRIS (E-Wallet &amp; M-Banking) 24/7 non-stop.</span>
                         </li>
                         <li class="flex items-start gap-2.5">
                             <i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i>
-                            <span>Pembayaran terverifikasi langsung oleh sistem API aman, tanpa risiko tipuan struk
-                                pembayaran.</span>
+                            <span>Pembayaran terverifikasi otomatis oleh sistem, bebas risiko penipuan struk palsu.</span>
                         </li>
                         <li class="flex items-start gap-2.5">
                             <i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i>
-                            <span>Sistem seketika mengambil 1 baris stok di database, mengirimkannya ke email pembeli
-                                secepat kilat.</span>
+                            <span>Sistem otomatis mengirimkan produk langsung ke email pembeli secara instan.</span>
                         </li>
                         <li class="flex items-start gap-2.5">
                             <i class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0"></i>
-                            <span>Informasi sisa stok terpampang transparan, sistem menolak order jika stok benar-benar
-                                kosong.</span>
+                            <span>Informasi sisa stok real-time, otomatis menolak pesanan jika stok Anda sudah habis.</span>
                         </li>
                     </ul>
                 </div>
@@ -980,8 +989,7 @@
                     <span
                         class="absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-brand-500 text-white flex items-center justify-center font-bold shadow-md shadow-brand-500/20">1</span>
                     <h4 class="text-base font-bold text-slate-950 dark:text-white mt-4">Buat Akun Seller</h4>
-                    <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">Daftarkan diri Anda di dashboard seller.
-                        Konfigurasi alamat slug kustom Anda, upload logo toko, serta masukkan tautan WA.</p>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">Buat akun Anda dengan mudah. Tentukan link kustom toko Anda (klikvirtual.id/namatoko), pasang logo, dan sambungkan nomor WhatsApp Anda.</p>
                 </div>
 
                 <!-- Step 2 -->
@@ -989,9 +997,8 @@
                     class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 text-center relative group">
                     <span
                         class="absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-brand-500 text-white flex items-center justify-center font-bold shadow-md shadow-brand-500/20">2</span>
-                    <h4 class="text-base font-bold text-slate-950 dark:text-white mt-4">Masukkan Produk & Stok</h4>
-                    <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">Buat produk digital baru, isi rincian
-                        harga, lalu upload file lisensi atau voucher secara bulk (satu baris per stok barang).</p>
+                    <h4 class="text-base font-bold text-slate-950 dark:text-white mt-4">Masukkan Produk &amp; Stok</h4>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">Buat produk digital baru, masukkan deskripsi, tentukan harga, dan masukkan stok voucher atau file yang ingin Anda jual.</p>
                 </div>
 
                 <!-- Step 3 -->
@@ -999,10 +1006,8 @@
                     class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 text-center relative group">
                     <span
                         class="absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-brand-500 text-white flex items-center justify-center font-bold shadow-md shadow-brand-500/20">3</span>
-                    <h4 class="text-base font-bold text-slate-950 dark:text-white mt-4">Hubungkan Notifikasi Bot</h4>
-                    <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">Tekan <code
-                            class="text-brand-500 font-bold">/start</code> di telegram bot resmi kami untuk mendapatkan
-                        Chat ID, pasang di profil toko dan Anda siap berbisnis secara otomatis!</p>
+                    <h4 class="text-base font-bold text-slate-950 dark:text-white mt-4">Aktifkan Notifikasi Bot</h4>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">Hubungkan toko Anda dengan bot Telegram resmi kami untuk menerima laporan detail setiap kali ada pesanan sukses secara real-time.</p>
                 </div>
             </div>
         </div>
@@ -1032,11 +1037,7 @@
                     </button>
                     <div x-show="activeFaq === 1" x-transition
                         class="p-5 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-2">
-                        <p>Kami bermitra dengan Payment Gateway Midtrans. Ketika pembeli menekan checkout, server
-                            memanggil API Midtrans untuk membuat QRIS unik yang berlaku real-time. Begitu pembeli
-                            membayar via aplikasi e-wallet apa pun, Midtrans mengirimkan notifikasi callback ke server
-                            KlikVirtual.ID, dan sistem langsung memproses pengiriman produk tanpa campur tangan admin.
-                        </p>
+                        <p>Ketika pembeli checkout dan melakukan pembayaran dengan memindai QRIS menggunakan aplikasi e-wallet (seperti Dana, OVO, GoPay) atau M-Banking, pembayaran akan terdeteksi otomatis oleh sistem dalam hitungan detik. Setelah sukses, produk digital langsung dikirim ke email pembeli secara instan tanpa perlu Anda proses secara manual.</p>
                     </div>
                 </div>
 
@@ -1044,18 +1045,13 @@
                 <div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden transition-all">
                     <button @click="activeFaq === 2 ? activeFaq = null : activeFaq = 2"
                         class="w-full text-left p-5 font-bold text-sm sm:text-base flex justify-between items-center bg-slate-50 dark:bg-slate-900/40 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">
-                        <span>Bagaimana format stok digital untuk bulk upload?</span>
+                        <span>Bagaimana cara mengupload banyak stok sekaligus?</span>
                         <i class="fa-solid transition-transform duration-200"
                             :class="activeFaq === 2 ? 'fa-chevron-up text-brand-500' : 'fa-chevron-down'"></i>
                     </button>
                     <div x-show="activeFaq === 2" x-transition
                         class="p-5 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-2">
-                        <p>Format stok produk digital di KlikVirtual sangat fleksibel. Gunakan baris baru untuk
-                            memisahkan item (satu baris mewakili satu stok). Jika Anda ingin memasukkan informasi
-                            multi-kolom seperti (Username || Password || Token) di dalam satu baris, Anda dapat
-                            menggunakan pemisah dobel pipa (<code class="text-brand-500 font-bold">||</code>). Sistem
-                            akan otomatis menerjemahkan pemisah tersebut sebagai baris baru yang rapi saat email
-                            pengiriman diterima pembeli.</p>
+                        <p>Sangat mudah dan hemat waktu! Anda dapat memasukkan ribuan stok voucher, lisensi, atau data akun sekaligus ke dashboard seller Anda. Sistem kami akan menyimpan stok tersebut secara aman dan membagikannya satu per satu secara otomatis kepada pembeli di setiap transaksi sukses.</p>
                     </div>
                 </div>
 
@@ -1063,16 +1059,13 @@
                 <div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden transition-all">
                     <button @click="activeFaq === 3 ? activeFaq = null : activeFaq = 3"
                         class="w-full text-left p-5 font-bold text-sm sm:text-base flex justify-between items-center bg-slate-50 dark:bg-slate-900/40 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">
-                        <span>Apakah aman dari pembeli palsu / scammer pendaftaran?</span>
+                        <span>Apakah sistem ini aman dari penipuan bukti transfer palsu?</span>
                         <i class="fa-solid transition-transform duration-200"
                             :class="activeFaq === 3 ? 'fa-chevron-up text-brand-500' : 'fa-chevron-down'"></i>
                     </button>
                     <div x-show="activeFaq === 3" x-transition
                         class="p-5 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-2">
-                        <p>Sangat aman! Formulir registrasi di Market Store kami batasi dengan perlindungan hCaptcha
-                            terintegrasi untuk menangkal serangan bot registrasi otomatis. Selain itu, kami menerapkan
-                            sistem Rate Limiting ketat pada server API otentikasi serta enkripsi HMAC-SHA256 yang
-                            tangguh untuk mendeteksi pembajakan session kuki.</p>
+                        <p>100% Aman! Karena pembayaran terverifikasi secara real-time langsung oleh sistem kami, pembeli tidak perlu mengirimkan bukti transfer manual ke Anda. Pengiriman produk hanya akan diproses jika dana benar-benar masuk ke sistem, sehingga Anda terbebas dari modus penipuan struk palsu.</p>
                     </div>
                 </div>
 
@@ -1080,16 +1073,13 @@
                 <div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden transition-all">
                     <button @click="activeFaq === 4 ? activeFaq = null : activeFaq = 4"
                         class="w-full text-left p-5 font-bold text-sm sm:text-base flex justify-between items-center bg-slate-50 dark:bg-slate-900/40 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">
-                        <span>Bagaimana cara mencairkan dana hasil penjualan?</span>
+                        <span>Bagaimana cara menarik dana hasil penjualan produk digital saya?</span>
                         <i class="fa-solid transition-transform duration-200"
                             :class="activeFaq === 4 ? 'fa-chevron-up text-brand-500' : 'fa-chevron-down'"></i>
                     </button>
                     <div x-show="activeFaq === 4" x-transition
                         class="p-5 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-2">
-                        <p>Setiap penjualan yang berhasil diselesaikan akan otomatis menambah saldo di Market Dashboard
-                            Anda. Penjual dapat mengajukan penarikan saldo (withdraw) langsung dari menu saldo di
-                            dashboard. Penarikan akan diverifikasi oleh sistem administrasi pusat dan ditransfer ke
-                            rekening bank / e-wallet Anda yang terdaftar dalam waktu cepat.</p>
+                        <p>Setiap penjualan yang berhasil diselesaikan akan otomatis menambah saldo di dashboard seller Anda. Anda dapat mengajukan pencairan dana hasil jualan kapan saja langsung ke rekening bank atau e-wallet terdaftar Anda dengan proses cepat, aman, dan mudah.</p>
                     </div>
                 </div>
             </div>
@@ -1107,7 +1097,7 @@
 
         <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-8">
             <div class="max-w-2xl mx-auto space-y-4">
-                <span class="text-xs font-bold uppercase tracking-widest text-cyan-300">Bergabung Bersama Kami</span>
+                <span class="text-xs font-bold uppercase tracking-widest text-indigo-300">Bergabung Bersama Kami</span>
                 <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Siap Melangkah Ke Era Penjualan Otomatis?
                 </h2>
                 <p class="text-indigo-100 text-sm sm:text-base">Bergabunglah bersama ratusan seller lisensi digital
@@ -1204,23 +1194,23 @@
 
                 <!-- Col 3: Integrations -->
                 <div class="space-y-2">
-                    <h5 class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Teknologi Mitra</h5>
+                    <h5 class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Keunggulan Toko</h5>
                     <ul class="space-y-1.5 text-xs text-slate-600 dark:text-slate-400">
-                        <li><a href="#" class="hover:text-brand-500">Midtrans Payment Gateway</a></li>
-                        <li><a href="#" class="hover:text-brand-500">Supabase Secure DB</a></li>
-                        <li><a href="#" class="hover:text-brand-500">Telegram Bot Webhook</a></li>
-                        <li><a href="#" class="hover:text-brand-500">Resend Automated Email</a></li>
+                        <li><span class="block">Pembayaran QRIS &amp; E-Wallet</span></li>
+                        <li><span class="block">Pengiriman Instan Otomatis</span></li>
+                        <li><span class="block">Notifikasi Real-Time Telegram</span></li>
+                        <li><span class="block">Kirim Email Resi Transaksi</span></li>
                     </ul>
                 </div>
 
                 <!-- Col 4: Safety info -->
                 <div class="space-y-2">
-                    <h5 class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Metrik Keamanan</h5>
+                    <h5 class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Keamanan &amp; Layanan</h5>
                     <ul class="space-y-1.5 text-xs text-slate-600 dark:text-slate-400">
-                        <li><span class="block">✓ hCaptcha Integration</span></li>
-                        <li><span class="block">✓ HMAC-SHA256 Cookie Encryption</span></li>
-                        <li><span class="block">✓ Real-time Rate Limiting</span></li>
-                        <li><span class="block">✓ 24-hour Server Backup Secure</span></li>
+                        <li><span class="block">✓ Sistem Proteksi Bot Otomatis</span></li>
+                        <li><span class="block">✓ Enkripsi Keamanan Akun Seller</span></li>
+                        <li><span class="block">✓ Pencegahan Transaksi Palsu</span></li>
+                        <li><span class="block">✓ Backup Data Penjualan Berkala</span></li>
                     </ul>
                 </div>
             </div>
