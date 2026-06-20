@@ -1,610 +1,741 @@
 <!DOCTYPE html>
 <html lang="id" x-data="landingPageGlobal()" :class="{ 'dark': darkMode }">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ketentuan Berjualan — KlikVirtual.ID</title>
-
-    <!-- Google Fonts: Inter -->
+    <title>Syarat & Ketentuan — KlikVirtual.ID</title>
+    <meta name="description" content="Baca syarat dan ketentuan lengkap penggunaan marketplace produk digital KlikVirtual.ID. Berlaku untuk semua pengguna, penjual, dan pembeli.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-
-    <!-- Tailwind CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
                     colors: {
                         brand: {
-                            50: '#f5f3ff',
-                            100: '#ede9fe',
-                            200: '#ddd6fe',
-                            500: '#5850ec', // KlikVirtual Brand Purple
-                            600: '#4f46e5',
-                            700: '#4338ca',
-                            950: '#130f26',
-                        },
-                        primary: {
-                            50: '#f5f3ff',
-                            100: '#ede9fe',
-                            200: '#ddd6fe',
-                            500: '#5850ec', // KlikVirtual ID Primary Purple
-                            600: '#4f46e5', // Medium Dark Indigo
-                            700: '#4338ca', // Dark Indigo
-                            800: '#3730a3',
-                            900: '#130f26',
-                        },
-                        cyber: {
-                            teal: '#14b8a6',
-                            emerald: '#10b981',
+                            50: '#f5f3ff', 100: '#ede9fe', 200: '#ddd6fe',
+                            400: '#a78bfa', 500: '#5850ec', 600: '#4f46e5',
+                            700: '#4338ca', 800: '#3730a3', 950: '#130f26',
                         }
                     }
                 }
             }
         }
     </script>
-
-    <!-- Alpine.js for state management -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-    <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <style>
-        [x-cloak] {
-            display: none !important;
+        [x-cloak] { display: none !important; }
+        html { scroll-behavior: smooth; }
+        .theme-transition { transition: background-color 0.4s cubic-bezier(0.4,0,0.2,1), border-color 0.3s ease, color 0.3s ease; }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        .dark ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #c7d2fe; border-radius: 99px; }
+        .dark ::-webkit-scrollbar-thumb { background: #3730a3; border-radius: 99px; }
+
+        .hero-mesh {
+            background-image:
+                radial-gradient(ellipse 60% 50% at 20% 40%, rgba(88,80,236,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 60% at 80% 20%, rgba(167,139,250,0.10) 0%, transparent 60%),
+                radial-gradient(ellipse 70% 40% at 60% 80%, rgba(99,102,241,0.07) 0%, transparent 60%);
+        }
+        .dark .hero-mesh {
+            background-image:
+                radial-gradient(ellipse 60% 50% at 20% 40%, rgba(88,80,236,0.20) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 60% at 80% 20%, rgba(167,139,250,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse 70% 40% at 60% 80%, rgba(99,102,241,0.10) 0%, transparent 60%);
         }
 
-        /* Smooth transitions for themes */
-        .theme-transition {
-            transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.4s ease, color 0.3s ease, box-shadow 0.4s ease;
+        .toc-link.active { color: #5850ec; background: rgba(88,80,236,0.08); border-left-color: #5850ec; }
+        .dark .toc-link.active { color: #a78bfa; background: rgba(88,80,236,0.15); border-left-color: #a78bfa; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-up { animation: fadeUp 0.5s ease forwards; }
+
+        .num-badge { background: linear-gradient(135deg, #5850ec 0%, #7c3aed 100%); }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(88,80,236,0.06) 0%, rgba(124,58,237,0.04) 100%);
+            border: 1px solid rgba(88,80,236,0.15);
+        }
+        .dark .highlight-box {
+            background: linear-gradient(135deg, rgba(88,80,236,0.12) 0%, rgba(124,58,237,0.08) 100%);
+            border-color: rgba(88,80,236,0.25);
         }
 
-        /* Premium clean scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
+        .warn-box {
+            background: linear-gradient(135deg, rgba(245,158,11,0.07) 0%, rgba(239,68,68,0.04) 100%);
+            border: 1px solid rgba(245,158,11,0.20);
+        }
+        .dark .warn-box {
+            background: linear-gradient(135deg, rgba(245,158,11,0.12) 0%, rgba(239,68,68,0.07) 100%);
+            border-color: rgba(245,158,11,0.25);
         }
 
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9;
+        .prohibited-item { border-left: 3px solid #ef4444; }
+
+        .content-card { transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
+        .content-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px -8px rgba(88,80,236,0.13);
+            border-color: rgba(88,80,236,0.25);
         }
 
-        .dark ::-webkit-scrollbar-track {
-            background: #0f172a;
+        #progress-bar {
+            position: fixed; top: 0; left: 0; height: 3px;
+            background: linear-gradient(90deg, #5850ec, #a78bfa);
+            z-index: 9999; transition: width 0.1s linear;
         }
 
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-
-        .dark ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 4px;
-        }
-
-        /* Subtle glow for professional element accentuation */
-        .premium-glow {
-            box-shadow: 0 0 25px -5px rgba(88, 80, 236, 0.15);
-        }
-
-        /* Custom soft animations */
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-6px);
-            }
-        }
-
-        .animate-soft-float {
-            animation: float 4s ease-in-out infinite;
-        }
+        /* Fix whitespace rendering for list items */
+        .li-text { display: inline; }
     </style>
 </head>
 
-<body class="theme-transition font-sans antialiased text-slate-800 bg-slate-50 dark:text-slate-100 dark:bg-slate-950">
+<body class="theme-transition font-sans antialiased text-slate-800 bg-slate-50 dark:text-slate-100 dark:bg-[#080b14]">
 
-    <!-- Navigation Header -->
-    <header
-        class="sticky top-0 z-40 w-full theme-transition border-b bg-white/80 backdrop-blur-md border-slate-200 dark:bg-slate-950/80 dark:border-slate-800">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <!-- Brand Logo -->
-            <a href="index.html" class="flex items-center gap-2.5 group">
-                <img src="https://putrabttstore.web.id/Logo%20Klik%20Virtual.png" alt="KlikVirtual.ID Logo"
-                    class="w-10 h-10 object-contain rounded-xl shadow-md shadow-brand-500/10 group-hover:scale-105 transition-transform duration-200"
-                    onerror="this.onerror=null; this.src='https://placehold.co/40x40/5850ec/ffffff?text=KV';">
+<div id="progress-bar" style="width:0%"></div>
+
+<!-- NAVBAR -->
+<header class="sticky top-0 z-40 w-full theme-transition border-b bg-white/80 backdrop-blur-md border-slate-200 dark:bg-slate-950/80 dark:border-slate-800">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-2.5 group">
+            <img src="https://putrabttstore.web.id/Logo%20Klik%20Virtual.png" alt="KlikVirtual.ID Logo" class="w-9 h-9 object-contain rounded-xl shadow-md shadow-brand-500/10 group-hover:scale-105 transition-transform duration-200" onerror="this.onerror=null;this.src='https://placehold.co/40x40/5850ec/ffffff?text=KV';">
+            <div>
+                <span class="text-lg font-extrabold tracking-tight text-slate-900 dark:text-white">KlikVirtual<span class="text-brand-500">.ID</span></span>
+                <span class="block text-[10px] font-medium tracking-wider text-slate-500 dark:text-slate-400 uppercase -mt-1">Marketplace Digital</span>
+            </div>
+        </a>
+        <nav class="hidden md:flex items-center gap-8">
+            <a href="index.html" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-500 transition-colors">Beranda</a>
+            <a href="index.html#fitur-store" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-500 transition-colors">Halaman Toko</a>
+            <a href="index.html#fitur-dashboard" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-500 transition-colors">Fitur Toko</a>
+            <a href="index.html#faq" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-500 transition-colors">Tanya Jawab</a>
+        </nav>
+        <div class="flex items-center gap-3">
+            <button @click="darkMode = !darkMode" class="p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-all" aria-label="Toggle Dark Mode">
+                <i class="fa-solid" :class="darkMode ? 'fa-sun text-yellow-400' : 'fa-moon text-slate-500'"></i>
+            </button>
+            <a href="https://seller.klikvirtual.id/register" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-sm font-bold rounded-xl text-white bg-brand-500 hover:bg-brand-600 shadow-md shadow-brand-500/20 active:scale-[0.97] transition-all">Daftar Gratis <i class="fa-solid fa-rocket text-xs"></i></a>
+            <button @click="mobileMenuOpen = !mobileMenuOpen" class="p-2 md:hidden text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg">
+                <i class="fa-solid text-xl" :class="mobileMenuOpen ? 'fa-xmark' : 'fa-bars'"></i>
+            </button>
+        </div>
+    </div>
+    <div x-show="mobileMenuOpen" @click.away="mobileMenuOpen = false" class="md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-4 py-3 space-y-1 shadow-xl" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-cloak>
+        <a href="index.html" @click="mobileMenuOpen=false" class="block px-3 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-900">Beranda</a>
+        <a href="index.html#fitur-store" @click="mobileMenuOpen=false" class="block px-3 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-900">Halaman Toko</a>
+        <a href="index.html#fitur-dashboard" @click="mobileMenuOpen=false" class="block px-3 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-900">Fitur Toko</a>
+        <a href="index.html#faq" @click="mobileMenuOpen=false" class="block px-3 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-900">Tanya Jawab</a>
+        <a href="https://seller.klikvirtual.id/register" target="_blank" @click="mobileMenuOpen=false" class="block w-full text-center px-4 py-2.5 mt-1 font-bold rounded-xl text-white bg-brand-500 hover:bg-brand-600">Daftar Buka Toko Gratis <i class="fa-solid fa-rocket ml-1 text-xs"></i></a>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="relative overflow-hidden py-16 lg:py-24 hero-mesh">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-5">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-50 dark:bg-brand-950/80 text-brand-600 dark:text-brand-300 border border-brand-200/60 dark:border-brand-800/60 text-xs font-bold uppercase tracking-widest">
+            <i class="fa-solid fa-shield-halved text-brand-500"></i> Dokumen Resmi Platform
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.1]">
+            Syarat <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-violet-500">&amp;</span> Ketentuan
+        </h1>
+        <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">Dengan menggunakan layanan <strong class="text-slate-800 dark:text-white">KlikVirtual.ID</strong>, Anda dianggap telah membaca, memahami, dan menyetujui seluruh ketentuan yang tercantum dalam dokumen ini.</p>
+        <div class="flex flex-wrap items-center justify-center gap-4 pt-2 text-xs text-slate-500 dark:text-slate-400">
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-calendar-days text-brand-400"></i> Berlaku sejak: 1 Januari 2026</span>
+            <span class="w-px h-4 bg-slate-300 dark:bg-slate-700 hidden sm:block"></span>
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-rotate text-brand-400"></i> Terakhir diperbarui: 21 Juni 2026</span>
+            <span class="w-px h-4 bg-slate-300 dark:bg-slate-700 hidden sm:block"></span>
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-file-lines text-brand-400"></i> 11 Pasal</span>
+        </div>
+    </div>
+</section>
+
+<!-- MAIN LAYOUT -->
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-28">
+    <div class="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
+
+        <!-- SIDEBAR TOC -->
+        <aside class="lg:sticky lg:top-24 w-full lg:w-72 shrink-0 order-first lg:order-last" x-data="tocHighlight()">
+            <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+                <div class="px-5 py-4 border-b border-slate-100 dark:border-slate-800 flex items-center gap-2">
+                    <i class="fa-solid fa-list-ul text-brand-500 text-sm"></i>
+                    <span class="text-sm font-bold text-slate-800 dark:text-white">Daftar Isi</span>
+                </div>
+                <nav class="p-3 space-y-0.5">
+                    <a href="#pasal-1" class="toc-link flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 border-l-2 border-transparent hover:bg-brand-50/50 dark:hover:bg-brand-950/30 transition-all"><span class="w-5 h-5 flex items-center justify-center rounded-full num-badge text-white text-[9px] font-black shrink-0">1</span> Definisi</a>
+                    <a href="#pasal-2" class="toc-link flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 border-l-2 border-transparent hover:bg-brand-50/50 dark:hover:bg-brand-950/30 transition-all"><span class="w-5 h-5 flex items-center justify-center rounded-full num-badge text-white text-[9px] font-black shrink-0">2</span> Pendaftaran &amp; Akun</a>
+                    <a href="#pasal-3" class="toc-link flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 border-l-2 border-transparent hover:bg-brand-50/50 dark:hover:bg-brand-950/30 transition-all"><span class="w-5 h-5 flex items-center justify-center rounded-full num-badge text-white text-[9px] font-black shrink-0">3</span> Hak &amp; Kewajiban Penjual</a>
+                    <a href="#pasal-4" class="toc-link flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 border-l-2 border-transparent hover:bg-brand-50/50 dark:hover:bg-brand-950/30 transition-all"><span class="w-5 h-5 flex items-center justify-center rounded-full num-badge text-white text-[9px] font-black shrink-0">4</span> Hak &amp; Kewajiban Pembeli</a>
+                    <a href="#pasal-5" class="toc-link flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 border-l-2 border-transparent hover:bg-brand-50/50 dark:hover:bg-brand-950/30 transition-all"><span class="w-5 h-5 flex items-center justify-center rounded-full num-badge text-white text-[9px] font-black shrink-0">5</span> Produk yang Dilarang</a>
+                    <a href="#pasal-6" class="toc-link flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 border-l-2 border-transparent hover:bg-brand-50/50 dark:hover:bg-brand-950/30 transition-all"><span class="w-5 h-5 flex items-center justify-center rounded-full num-badge text-white text-[9px] font-black shrink-0">6</span> Sengketa &amp; Penyelesaian</a>
+                    <a href="#pasal-7" class="toc-link flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 border-l-2 border-transparent hover:bg-brand-50/50 dark:hover:bg-brand-950/30 transition-all"><span class="w-5 h-5 flex items-center justify-center rounded-full num-badge text-white text-[9px] font-black shrink-0">7</span> Biaya Layanan</a>
+                    <a href="#pasal-8" class="toc-link flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 border-l-2 border-transparent hover:bg-brand-50/50 dark:hover:bg-brand-950/30 transition-all"><span class="w-5 h-5 flex items-center justify-center rounded-full num-badge text-white text-[9px] font-black shrink-0">8</span> Pembatasan Tanggung Jawab</a>
+                    <a href="#pasal-9" class="toc-link flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 border-l-2 border-transparent hover:bg-brand-50/50 dark:hover:bg-brand-950/30 transition-all"><span class="w-5 h-5 flex items-center justify-center rounded-full num-badge text-white text-[9px] font-black shrink-0">9</span> Penangguhan Akun</a>
+                    <a href="#pasal-10" class="toc-link flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 border-l-2 border-transparent hover:bg-brand-50/50 dark:hover:bg-brand-950/30 transition-all"><span class="w-5 h-5 flex items-center justify-center rounded-full num-badge text-white text-[9px] font-black shrink-0">10</span> Perubahan Ketentuan</a>
+                    <a href="#pasal-11" class="toc-link flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 border-l-2 border-transparent hover:bg-brand-50/50 dark:hover:bg-brand-950/30 transition-all"><span class="w-5 h-5 flex items-center justify-center rounded-full num-badge text-white text-[9px] font-black shrink-0">11</span> Penutup</a>
+                </nav>
+                <div class="m-3 mt-0 p-3.5 rounded-xl highlight-box text-center">
+                    <p class="text-[11px] text-slate-600 dark:text-slate-400 mb-2">Ada pertanyaan tentang S&amp;K ini?</p>
+                    <a href="https://wa.me/6282340915319" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white text-[11px] font-bold transition-colors"><i class="fa-brands fa-whatsapp"></i> Hubungi CS Kami</a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="flex-1 min-w-0 space-y-6 pt-8">
+
+            <!-- Intro notice -->
+            <div class="highlight-box rounded-2xl p-5 flex gap-4 items-start">
+                <div class="w-9 h-9 rounded-xl bg-brand-500/10 flex items-center justify-center shrink-0"><i class="fa-solid fa-circle-info text-brand-500"></i></div>
                 <div>
-                    <span class="text-lg font-extrabold tracking-tight text-slate-900 dark:text-white">KlikVirtual<span
-                            class="text-brand-500">.ID</span></span>
-                    <span
-                        class="block text-[10px] font-medium tracking-wider text-slate-500 dark:text-slate-400 uppercase -mt-1">Buka
-                        Toko Online Gratis</span>
+                    <p class="text-sm font-semibold text-slate-800 dark:text-white mb-1">Penting untuk Dibaca</p>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Dokumen ini merupakan perjanjian yang mengikat secara hukum antara Anda (Pengguna) dengan <strong class="text-slate-700 dark:text-slate-200">PBS Digital Indonesia</strong> selaku pengelola platform KlikVirtual.ID. Apabila Anda tidak menyetujui ketentuan ini, mohon hentikan penggunaan layanan kami.</p>
                 </div>
-            </a>
+            </div>
 
-            <!-- Desktop Nav Items -->
-            <nav class="hidden md:flex items-center gap-8">
-                <a href="index.html" class="text-sm font-medium hover:text-brand-500 transition-colors">Beranda</a>
-                <a href="index.html#fitur-store"
-                    class="text-sm font-medium hover:text-brand-500 transition-colors">Halaman Toko</a>
-                <a href="index.html#fitur-dashboard"
-                    class="text-sm font-medium hover:text-brand-500 transition-colors">Fitur Toko</a>
-                <a href="index.html#faq" class="text-sm font-medium hover:text-brand-500 transition-colors">Tanya
-                    Jawab</a>
-            </nav>
+            <!-- PASAL 1: DEFINISI -->
+            <article id="pasal-1" class="content-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+                <div class="flex items-center gap-4 px-6 py-5 border-b border-slate-100 dark:border-slate-800">
+                    <div class="w-10 h-10 rounded-xl num-badge flex items-center justify-center text-white shrink-0"><i class="fa-solid fa-book text-sm"></i></div>
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-brand-500 mb-0.5">Pasal 1</p>
+                        <h2 class="text-lg font-extrabold text-slate-900 dark:text-white">Definisi</h2>
+                    </div>
+                </div>
+                <div class="px-6 py-6 space-y-3">
+                    <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">Dalam Syarat dan Ketentuan ini, istilah-istilah berikut memiliki pengertian sebagai berikut:</p>
+                    <div class="grid sm:grid-cols-2 gap-3">
+                        <div class="rounded-xl bg-slate-50 dark:bg-slate-800/50 p-4 border border-slate-100 dark:border-slate-700/50">
+                            <p class="text-xs font-bold text-brand-500 mb-1">Platform / Marketplace</p>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Layanan marketplace produk digital yang dioperasikan di bawah domain <strong class="text-slate-700 dark:text-slate-200">klikvirtual.id</strong> beserta seluruh subdomain dan aplikasi turunannya.</p>
+                        </div>
+                        <div class="rounded-xl bg-slate-50 dark:bg-slate-800/50 p-4 border border-slate-100 dark:border-slate-700/50">
+                            <p class="text-xs font-bold text-brand-500 mb-1">Pengelola / Kami</p>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">PBS Digital Indonesia, selaku pemilik dan penyelenggara platform KlikVirtual.ID.</p>
+                        </div>
+                        <div class="rounded-xl bg-slate-50 dark:bg-slate-800/50 p-4 border border-slate-100 dark:border-slate-700/50">
+                            <p class="text-xs font-bold text-brand-500 mb-1">Pengguna</p>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Setiap individu atau badan hukum yang mengakses, mendaftar, atau menggunakan layanan platform, baik sebagai Penjual maupun Pembeli.</p>
+                        </div>
+                        <div class="rounded-xl bg-slate-50 dark:bg-slate-800/50 p-4 border border-slate-100 dark:border-slate-700/50">
+                            <p class="text-xs font-bold text-brand-500 mb-1">Penjual (Seller)</p>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Pengguna terdaftar yang membuka toko dan menawarkan produk digital untuk dijual kepada pembeli melalui platform.</p>
+                        </div>
+                        <div class="rounded-xl bg-slate-50 dark:bg-slate-800/50 p-4 border border-slate-100 dark:border-slate-700/50">
+                            <p class="text-xs font-bold text-brand-500 mb-1">Pembeli (Buyer)</p>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Pengguna yang melakukan pembelian produk digital dari penjual yang terdaftar pada platform.</p>
+                        </div>
+                        <div class="rounded-xl bg-slate-50 dark:bg-slate-800/50 p-4 border border-slate-100 dark:border-slate-700/50">
+                            <p class="text-xs font-bold text-brand-500 mb-1">Produk Digital</p>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Barang non-fisik yang diperjualbelikan melalui platform, mencakup voucher game, akun premium, lisensi software, e-book, dan sejenisnya.</p>
+                        </div>
+                        <div class="rounded-xl bg-slate-50 dark:bg-slate-800/50 p-4 border border-slate-100 dark:border-slate-700/50">
+                            <p class="text-xs font-bold text-brand-500 mb-1">Transaksi</p>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Kegiatan jual beli produk digital antara penjual dan pembeli yang difasilitasi melalui sistem pembayaran platform.</p>
+                        </div>
+                        <div class="rounded-xl bg-slate-50 dark:bg-slate-800/50 p-4 border border-slate-100 dark:border-slate-700/50">
+                            <p class="text-xs font-bold text-brand-500 mb-1">Saldo Aktif</p>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Dana hasil penjualan yang telah melewati masa verifikasi 72 jam dan tersedia untuk dicairkan oleh penjual.</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
 
-            <!-- Right Actions (Theme Switcher + CTA Button) -->
-            <div class="flex items-center gap-4">
-                <!-- Theme toggle switch -->
-                <button @click="darkMode = !darkMode"
-                    class="p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-all"
-                    aria-label="Toggle Dark Mode">
-                    <i class="fa-solid" :class="darkMode ? 'fa-sun text-yellow-400' : 'fa-moon text-slate-600'"></i>
-                </button>
+            <!-- PASAL 2: PENDAFTARAN & AKUN -->
+            <article id="pasal-2" class="content-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+                <div class="flex items-center gap-4 px-6 py-5 border-b border-slate-100 dark:border-slate-800">
+                    <div class="w-10 h-10 rounded-xl num-badge flex items-center justify-center text-white shrink-0"><i class="fa-solid fa-user-plus text-sm"></i></div>
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-brand-500 mb-0.5">Pasal 2</p>
+                        <h2 class="text-lg font-extrabold text-slate-900 dark:text-white">Pendaftaran dan Akun Pengguna</h2>
+                    </div>
+                </div>
+                <div class="px-6 py-6 space-y-5">
+                    <div class="space-y-3">
+                        <h3 class="text-sm font-bold text-slate-800 dark:text-white flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-500 inline-block"></span>2.1 Syarat Pendaftaran</h3>
+                        <ul class="space-y-2.5">
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Pengguna harus berusia minimal <strong class="text-slate-700 dark:text-slate-200">17 tahun</strong> atau sudah cakap hukum menurut perundang-undangan Indonesia.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Pengguna wajib memberikan <strong class="text-slate-700 dark:text-slate-200">data yang benar, lengkap, dan terkini</strong> pada saat pendaftaran akun.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Setiap orang hanya diperbolehkan memiliki <strong class="text-slate-700 dark:text-slate-200">satu akun aktif</strong>. Pembuatan akun ganda tanpa izin tertulis dari pengelola dilarang keras.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Pendaftaran dianggap sah setelah pengguna menyelesaikan proses verifikasi email dan/atau nomor telepon.</span></li>
+                        </ul>
+                    </div>
+                    <div class="w-full h-px bg-slate-100 dark:bg-slate-800"></div>
+                    <div class="space-y-3">
+                        <h3 class="text-sm font-bold text-slate-800 dark:text-white flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-500 inline-block"></span>2.2 Keamanan Akun</h3>
+                        <ul class="space-y-2.5">
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Pengguna bertanggung jawab penuh atas kerahasiaan <strong class="text-slate-700 dark:text-slate-200">kata sandi dan keamanan akun</strong> miliknya.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Segala aktivitas yang terjadi melalui akun pengguna merupakan tanggung jawab pengguna sepenuhnya, termasuk jika terjadi akibat kelalaian menjaga kerahasiaan akun.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Pengguna wajib segera melaporkan kepada pengelola apabila mengetahui adanya <strong class="text-slate-700 dark:text-slate-200">akses tidak sah</strong> ke akunnya.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Dilarang keras memindahtangankan, menjual, atau menyewakan akun kepada pihak lain.</span></li>
+                        </ul>
+                    </div>
+                    <div class="warn-box rounded-xl p-4 flex gap-3 items-start">
+                        <i class="fa-solid fa-triangle-exclamation text-amber-500 shrink-0 mt-0.5"></i>
+                        <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed"><strong class="text-slate-800 dark:text-white">Pengelola tidak bertanggung jawab</strong> atas kerugian yang timbul akibat kelalaian pengguna dalam menjaga keamanan data akun pribadinya.</p>
+                    </div>
+                </div>
+            </article>
 
-                <!-- CTA Button -->
-                <a href="https://seller.klikvirtual.id/register" target="_blank" rel="noopener noreferrer"
-                    class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-sm font-bold rounded-lg text-white bg-brand-500 hover:bg-brand-600 shadow-md shadow-brand-500/10 active:scale-[0.98] transition-all">
-                    Daftar Gratis <i class="fa-solid fa-rocket ml-2 text-xs"></i>
+            <!-- PASAL 3: HAK & KEWAJIBAN PENJUAL -->
+            <article id="pasal-3" class="content-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+                <div class="flex items-center gap-4 px-6 py-5 border-b border-slate-100 dark:border-slate-800">
+                    <div class="w-10 h-10 rounded-xl num-badge flex items-center justify-center text-white shrink-0"><i class="fa-solid fa-store text-sm"></i></div>
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-brand-500 mb-0.5">Pasal 3</p>
+                        <h2 class="text-lg font-extrabold text-slate-900 dark:text-white">Hak dan Kewajiban Penjual</h2>
+                    </div>
+                </div>
+                <div class="px-6 py-6 space-y-6">
+                    <div class="space-y-3">
+                        <h3 class="text-sm font-bold text-slate-800 dark:text-white flex items-center gap-2"><i class="fa-solid fa-star text-brand-400 text-xs"></i>3.1 Hak Penjual</h3>
+                        <ul class="space-y-2.5">
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Mendapatkan akses ke <strong class="text-slate-700 dark:text-slate-200">dashboard seller</strong> lengkap dengan fitur manajemen produk, laporan penjualan, dan analitik toko.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Menentukan secara bebas <strong class="text-slate-700 dark:text-slate-200">harga, deskripsi, dan stok produk</strong> yang dijual selama tidak melanggar ketentuan platform.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Menerima <strong class="text-slate-700 dark:text-slate-200">notifikasi real-time</strong> setiap transaksi masuk melalui Telegram bot atau email.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Mencairkan saldo aktif ke rekening bank atau e-wallet terdaftar dengan ketentuan yang berlaku.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Menggunakan fitur <strong class="text-slate-700 dark:text-slate-200">sistem reseller dinamis</strong> untuk memperluas jaringan distribusi produk.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Mendapatkan dukungan teknis dari tim platform dalam penyelesaian kendala operasional toko.</span></li>
+                        </ul>
+                    </div>
+                    <div class="w-full h-px bg-slate-100 dark:bg-slate-800"></div>
+                    <div class="space-y-3">
+                        <h3 class="text-sm font-bold text-slate-800 dark:text-white flex items-center gap-2"><i class="fa-solid fa-clipboard-check text-brand-400 text-xs"></i>3.2 Kewajiban Penjual</h3>
+                        <ul class="space-y-2.5">
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Memastikan seluruh produk yang dijual adalah <strong class="text-slate-700 dark:text-slate-200">asli, legal, dan sesuai deskripsi</strong> yang tercantum.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Menjaga ketersediaan stok dan memastikan produk dapat terkirim secara otomatis kepada pembeli segera setelah pembayaran terkonfirmasi.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Memberikan pelayanan purna jual yang baik dan membantu pembeli apabila terdapat kendala pada produk yang diterima.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Tidak melakukan manipulasi sistem, pembuatan transaksi palsu, atau segala bentuk <strong class="text-slate-700 dark:text-slate-200">kecurangan</strong> yang merugikan pihak lain.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Mematuhi seluruh regulasi perpajakan yang berlaku atas penghasilan yang diperoleh melalui platform.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Bersedia memenuhi permintaan <strong class="text-slate-700 dark:text-slate-200">verifikasi identitas</strong> (KTP/dokumen lain) apabila diminta oleh pengelola untuk keperluan keamanan akun.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+
+            <!-- PASAL 4: HAK & KEWAJIBAN PEMBELI -->
+            <article id="pasal-4" class="content-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+                <div class="flex items-center gap-4 px-6 py-5 border-b border-slate-100 dark:border-slate-800">
+                    <div class="w-10 h-10 rounded-xl num-badge flex items-center justify-center text-white shrink-0"><i class="fa-solid fa-cart-shopping text-sm"></i></div>
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-brand-500 mb-0.5">Pasal 4</p>
+                        <h2 class="text-lg font-extrabold text-slate-900 dark:text-white">Hak dan Kewajiban Pembeli</h2>
+                    </div>
+                </div>
+                <div class="px-6 py-6 space-y-6">
+                    <div class="space-y-3">
+                        <h3 class="text-sm font-bold text-slate-800 dark:text-white flex items-center gap-2"><i class="fa-solid fa-star text-brand-400 text-xs"></i>4.1 Hak Pembeli</h3>
+                        <ul class="space-y-2.5">
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Mendapatkan <strong class="text-slate-700 dark:text-slate-200">produk digital yang sesuai</strong> dengan deskripsi penjual segera setelah pembayaran berhasil dikonfirmasi.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Menerima <strong class="text-slate-700 dark:text-slate-200">resi transaksi resmi</strong> melalui email yang berisi detail pembelian dan data produk.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Mengajukan <strong class="text-slate-700 dark:text-slate-200">klaim atau pengaduan</strong> apabila produk yang diterima tidak sesuai dengan yang tertera di halaman produk.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Mendapat perlindungan atas data pribadi yang diberikan sesuai <strong class="text-slate-700 dark:text-slate-200">Kebijakan Privasi</strong> platform.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Mendapatkan informasi yang <strong class="text-slate-700 dark:text-slate-200">transparan</strong> mengenai biaya tambahan (biaya payment gateway) sebelum menyelesaikan pembayaran.</span></li>
+                        </ul>
+                    </div>
+                    <div class="w-full h-px bg-slate-100 dark:bg-slate-800"></div>
+                    <div class="space-y-3">
+                        <h3 class="text-sm font-bold text-slate-800 dark:text-white flex items-center gap-2"><i class="fa-solid fa-clipboard-check text-brand-400 text-xs"></i>4.2 Kewajiban Pembeli</h3>
+                        <ul class="space-y-2.5">
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Memastikan semua data yang dimasukkan saat proses checkout adalah <strong class="text-slate-700 dark:text-slate-200">benar dan valid</strong> (email, nomor, dan data lain yang diminta).</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Melakukan pembayaran sesuai metode yang dipilih dalam <strong class="text-slate-700 dark:text-slate-200">batas waktu yang ditetapkan</strong> untuk menghindari pembatalan otomatis transaksi.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Tidak melakukan <strong class="text-slate-700 dark:text-slate-200">chargeback</strong> atau pembatalan pembayaran secara sepihak melalui bank/gateway setelah produk digital telah terkirim.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Menggunakan produk digital yang dibeli sesuai dengan <strong class="text-slate-700 dark:text-slate-200">ketentuan penggunaan</strong> yang telah ditetapkan oleh penjual dan/atau penerbit produk.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Tidak menyebarluaskan ulang produk digital untuk <strong class="text-slate-700 dark:text-slate-200">tujuan komersial</strong> tanpa izin dari penjual.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+
+            <!-- PASAL 5: PRODUK YANG DILARANG -->
+            <article id="pasal-5" class="content-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+                <div class="flex items-center gap-4 px-6 py-5 border-b border-slate-100 dark:border-slate-800">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center text-white shrink-0"><i class="fa-solid fa-ban text-sm"></i></div>
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-red-500 mb-0.5">Pasal 5</p>
+                        <h2 class="text-lg font-extrabold text-slate-900 dark:text-white">Produk yang Dilarang</h2>
+                    </div>
+                </div>
+                <div class="px-6 py-6 space-y-4">
+                    <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Penjual dilarang keras menjual produk-produk berikut di platform KlikVirtual.ID. Pelanggaran akan mengakibatkan penghapusan produk, pembekuan saldo, dan/atau penghapusan akun secara permanen:</p>
+                    <div class="grid sm:grid-cols-2 gap-3">
+                        <div class="prohibited-item rounded-r-xl bg-red-50/70 dark:bg-red-950/20 p-4">
+                            <p class="text-xs font-bold text-red-600 dark:text-red-400 mb-1 flex items-center gap-1.5"><i class="fa-solid fa-xmark"></i> Konten Ilegal &amp; SARA</p>
+                            <p class="text-xs text-slate-600 dark:text-slate-400">Produk yang mengandung konten pornografi, perjudian, ujaran kebencian, SARA, atau yang melanggar hukum Indonesia.</p>
+                        </div>
+                        <div class="prohibited-item rounded-r-xl bg-red-50/70 dark:bg-red-950/20 p-4">
+                            <p class="text-xs font-bold text-red-600 dark:text-red-400 mb-1 flex items-center gap-1.5"><i class="fa-solid fa-xmark"></i> Akun &amp; Data Curian</p>
+                            <p class="text-xs text-slate-600 dark:text-slate-400">Akun media sosial, platform streaming, atau layanan digital lain yang diperoleh secara tidak sah, diretas, atau dicuri.</p>
+                        </div>
+                        <div class="prohibited-item rounded-r-xl bg-red-50/70 dark:bg-red-950/20 p-4">
+                            <p class="text-xs font-bold text-red-600 dark:text-red-400 mb-1 flex items-center gap-1.5"><i class="fa-solid fa-xmark"></i> Software Berbahaya</p>
+                            <p class="text-xs text-slate-600 dark:text-slate-400">Malware, ransomware, trojan, spyware, tools hacking, cheat game, atau perangkat lunak yang dirancang untuk merusak sistem.</p>
+                        </div>
+                        <div class="prohibited-item rounded-r-xl bg-red-50/70 dark:bg-red-950/20 p-4">
+                            <p class="text-xs font-bold text-red-600 dark:text-red-400 mb-1 flex items-center gap-1.5"><i class="fa-solid fa-xmark"></i> Lisensi Palsu / Bajakan</p>
+                            <p class="text-xs text-slate-600 dark:text-slate-400">Kunci lisensi software yang tidak resmi, bajakan, hasil crack, atau diperoleh dari sumber yang tidak sah dari pengembang aslinya.</p>
+                        </div>
+                        <div class="prohibited-item rounded-r-xl bg-red-50/70 dark:bg-red-950/20 p-4">
+                            <p class="text-xs font-bold text-red-600 dark:text-red-400 mb-1 flex items-center gap-1.5"><i class="fa-solid fa-xmark"></i> Penipuan &amp; Scam</p>
+                            <p class="text-xs text-slate-600 dark:text-slate-400">Produk berupa skema investasi palsu, layanan "follow/like" palsu, data kartu kredit, atau segala bentuk penipuan daring.</p>
+                        </div>
+                        <div class="prohibited-item rounded-r-xl bg-red-50/70 dark:bg-red-950/20 p-4">
+                            <p class="text-xs font-bold text-red-600 dark:text-red-400 mb-1 flex items-center gap-1.5"><i class="fa-solid fa-xmark"></i> Produk Terlarang Hukum</p>
+                            <p class="text-xs text-slate-600 dark:text-slate-400">Segala produk atau jasa yang dilarang oleh peraturan perundang-undangan Republik Indonesia maupun regulasi internasional yang berlaku.</p>
+                        </div>
+                    </div>
+                    <div class="warn-box rounded-xl p-4 flex gap-3 items-start mt-2">
+                        <i class="fa-solid fa-triangle-exclamation text-amber-500 shrink-0 mt-0.5 text-sm"></i>
+                        <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">Pengelola berhak menghapus produk yang dianggap melanggar ketentuan ini <strong class="text-slate-800 dark:text-white">tanpa pemberitahuan sebelumnya</strong> dan dapat melaporkan pelanggaran kepada pihak berwajib jika diperlukan.</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- PASAL 6: SENGKETA & PENYELESAIAN -->
+            <article id="pasal-6" class="content-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+                <div class="flex items-center gap-4 px-6 py-5 border-b border-slate-100 dark:border-slate-800">
+                    <div class="w-10 h-10 rounded-xl num-badge flex items-center justify-center text-white shrink-0"><i class="fa-solid fa-scale-balanced text-sm"></i></div>
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-brand-500 mb-0.5">Pasal 6</p>
+                        <h2 class="text-lg font-extrabold text-slate-900 dark:text-white">Sengketa dan Penyelesaian Masalah</h2>
+                    </div>
+                </div>
+                <div class="px-6 py-6 space-y-5">
+                    <div class="space-y-3">
+                        <h3 class="text-sm font-bold text-slate-800 dark:text-white flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-500 inline-block"></span>6.1 Prosedur Pengajuan Klaim</h3>
+                        <div class="space-y-3 mt-2">
+                            <div class="flex gap-4 items-start">
+                                <div class="w-8 h-8 rounded-full bg-brand-500/10 border-2 border-brand-500/30 flex items-center justify-center text-brand-500 font-black text-xs shrink-0">1</div>
+                                <div class="pt-1">
+                                    <p class="text-sm font-semibold text-slate-800 dark:text-white">Kontak Penjual Langsung</p>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Pembeli wajib terlebih dahulu menghubungi penjual secara langsung melalui fitur pesan platform dalam waktu <strong class="text-slate-600 dark:text-slate-300">1×24 jam</strong> setelah produk diterima.</p>
+                                </div>
+                            </div>
+                            <div class="ml-4 w-px h-4 bg-slate-200 dark:bg-slate-700"></div>
+                            <div class="flex gap-4 items-start">
+                                <div class="w-8 h-8 rounded-full bg-brand-500/10 border-2 border-brand-500/30 flex items-center justify-center text-brand-500 font-black text-xs shrink-0">2</div>
+                                <div class="pt-1">
+                                    <p class="text-sm font-semibold text-slate-800 dark:text-white">Eskalasi ke Tim KlikVirtual</p>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Apabila tidak tercapai kesepakatan dalam 2×24 jam, pembeli dapat mengajukan klaim resmi ke tim pengelola melalui WhatsApp CS atau email support.</p>
+                                </div>
+                            </div>
+                            <div class="ml-4 w-px h-4 bg-slate-200 dark:bg-slate-700"></div>
+                            <div class="flex gap-4 items-start">
+                                <div class="w-8 h-8 rounded-full bg-brand-500/10 border-2 border-brand-500/30 flex items-center justify-center text-brand-500 font-black text-xs shrink-0">3</div>
+                                <div class="pt-1">
+                                    <p class="text-sm font-semibold text-slate-800 dark:text-white">Investigasi &amp; Keputusan Platform</p>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Tim pengelola akan meninjau bukti dari kedua belah pihak dan memberikan keputusan dalam <strong class="text-slate-600 dark:text-slate-300">5 hari kerja</strong>. Keputusan pengelola bersifat final dan mengikat.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full h-px bg-slate-100 dark:bg-slate-800"></div>
+                    <div class="space-y-3">
+                        <h3 class="text-sm font-bold text-slate-800 dark:text-white flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-500 inline-block"></span>6.2 Kebijakan Refund (Pengembalian Dana)</h3>
+                        <ul class="space-y-2.5">
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Refund <strong class="text-slate-700 dark:text-slate-200">hanya berlaku</strong> jika produk yang diterima terbukti tidak sesuai deskripsi atau produk tidak terkirim setelah pembayaran berhasil.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Produk digital yang <strong class="text-slate-700 dark:text-slate-200">telah berhasil terkirim dan digunakan</strong> tidak dapat dikembalikan atau di-refund kecuali terdapat bukti cacat produk yang valid.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Proses pengembalian dana dilakukan dalam <strong class="text-slate-700 dark:text-slate-200">7 hari kerja</strong> setelah klaim disetujui, ke metode pembayaran asal.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Biaya payment gateway (0,7%) <strong class="text-slate-700 dark:text-slate-200">tidak dapat dikembalikan</strong> karena telah dibayarkan ke penyedia layanan gateway.</span></li>
+                        </ul>
+                    </div>
+                    <div class="space-y-3">
+                        <h3 class="text-sm font-bold text-slate-800 dark:text-white flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-500 inline-block"></span>6.3 Penyelesaian Hukum</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Apabila sengketa tidak dapat diselesaikan secara musyawarah melalui platform, para pihak sepakat untuk menyelesaikan perselisihan melalui <strong class="text-slate-700 dark:text-slate-200">Pengadilan Negeri yang berwenang</strong> di wilayah hukum Republik Indonesia, dengan mengutamakan penyelesaian melalui mediasi terlebih dahulu.</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- PASAL 7: BIAYA LAYANAN -->
+            <article id="pasal-7" class="content-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+                <div class="flex items-center gap-4 px-6 py-5 border-b border-slate-100 dark:border-slate-800">
+                    <div class="w-10 h-10 rounded-xl num-badge flex items-center justify-center text-white shrink-0"><i class="fa-solid fa-coins text-sm"></i></div>
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-brand-500 mb-0.5">Pasal 7</p>
+                        <h2 class="text-lg font-extrabold text-slate-900 dark:text-white">Biaya Layanan</h2>
+                    </div>
+                </div>
+                <div class="px-6 py-6 space-y-5">
+                    <div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="bg-brand-50 dark:bg-brand-950/50 text-left">
+                                    <th class="px-4 py-3 text-xs font-bold text-brand-700 dark:text-brand-300 uppercase tracking-wider">Jenis Biaya</th>
+                                    <th class="px-4 py-3 text-xs font-bold text-brand-700 dark:text-brand-300 uppercase tracking-wider">Besaran</th>
+                                    <th class="px-4 py-3 text-xs font-bold text-brand-700 dark:text-brand-300 uppercase tracking-wider">Dibebankan Kepada</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                                <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+                                    <td class="px-4 py-3.5 text-xs text-slate-700 dark:text-slate-300 font-medium">Biaya Layanan Platform</td>
+                                    <td class="px-4 py-3.5"><span class="text-brand-500 font-black text-sm">5%</span> <span class="text-xs text-slate-500">per transaksi</span></td>
+                                    <td class="px-4 py-3.5 text-xs text-slate-600 dark:text-slate-400">Penjual (dipotong otomatis)</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+                                    <td class="px-4 py-3.5 text-xs text-slate-700 dark:text-slate-300 font-medium">Biaya Layanan Pembayaran</td>
+                                    <td class="px-4 py-3.5"><span class="text-brand-500 font-black text-sm">5%</span> <span class="text-xs text-slate-500">per transaksi</span></td>
+                                    <td class="px-4 py-3.5 text-xs text-slate-600 dark:text-slate-400">Pembeli (ditampilkan di checkout)</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+                                    <td class="px-4 py-3.5 text-xs text-slate-700 dark:text-slate-300 font-medium">Biaya Admin Penarikan</td>
+                                    <td class="px-4 py-3.5"><span class="text-brand-500 font-black text-sm">Rp 5.000</span> <span class="text-xs text-slate-500">per penarikan</span></td>
+                                    <td class="px-4 py-3.5 text-xs text-slate-600 dark:text-slate-400">Penjual (dipotong dari saldo)</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+                                    <td class="px-4 py-3.5 text-xs text-slate-700 dark:text-slate-300 font-medium">Minimum Penarikan Saldo</td>
+                                    <td class="px-4 py-3.5"><span class="text-brand-500 font-black text-sm">Rp 50.000</span></td>
+                                    <td class="px-4 py-3.5 text-xs text-slate-600 dark:text-slate-400">—</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+                                    <td class="px-4 py-3.5 text-xs text-slate-700 dark:text-slate-300 font-medium">Masa Verifikasi Saldo</td>
+                                    <td class="px-4 py-3.5"><span class="text-brand-500 font-black text-sm">72 Jam</span> <span class="text-xs text-slate-500">setelah transaksi</span></td>
+                                    <td class="px-4 py-3.5 text-xs text-slate-600 dark:text-slate-400">Berlaku untuk semua penjual</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+                                    <td class="px-4 py-3.5 text-xs text-slate-700 dark:text-slate-300 font-medium">Biaya Buka Toko</td>
+                                    <td class="px-4 py-3.5"><span class="text-emerald-500 font-black text-sm">GRATIS</span></td>
+                                    <td class="px-4 py-3.5 text-xs text-slate-600 dark:text-slate-400">—</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="highlight-box rounded-xl p-4 flex gap-3 items-start">
+                        <i class="fa-solid fa-circle-info text-brand-500 shrink-0 mt-0.5"></i>
+                        <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">Pengelola berhak melakukan penyesuaian terhadap struktur biaya layanan dengan memberikan pemberitahuan <strong class="text-slate-800 dark:text-white">minimal 14 hari kalender</strong> sebelumnya kepada seluruh pengguna terdaftar.</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- PASAL 8: PEMBATASAN TANGGUNG JAWAB -->
+            <article id="pasal-8" class="content-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+                <div class="flex items-center gap-4 px-6 py-5 border-b border-slate-100 dark:border-slate-800">
+                    <div class="w-10 h-10 rounded-xl num-badge flex items-center justify-center text-white shrink-0"><i class="fa-solid fa-shield text-sm"></i></div>
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-brand-500 mb-0.5">Pasal 8</p>
+                        <h2 class="text-lg font-extrabold text-slate-900 dark:text-white">Pembatasan Tanggung Jawab</h2>
+                    </div>
+                </div>
+                <div class="px-6 py-6 space-y-4">
+                    <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Platform KlikVirtual.ID berfungsi sebagai <strong class="text-slate-700 dark:text-slate-200">fasilitator</strong> antara penjual dan pembeli. Pengelola tidak bertanggung jawab atas:</p>
+                    <ul class="space-y-2.5">
+                        <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-minus text-slate-400 mt-1 shrink-0 text-xs"></i><span>Kualitas, keakuratan, legalitas, atau kesesuaian produk yang dijual oleh penjual di luar ketentuan yang telah ditetapkan platform.</span></li>
+                        <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-minus text-slate-400 mt-1 shrink-0 text-xs"></i><span>Kerugian yang timbul akibat <strong class="text-slate-700 dark:text-slate-200">gangguan sistem, maintenance, force majeure</strong>, atau kejadian di luar kendali pengelola.</span></li>
+                        <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-minus text-slate-400 mt-1 shrink-0 text-xs"></i><span>Kerugian akibat akses tidak sah ke akun pengguna yang disebabkan oleh kelalaian pengguna sendiri.</span></li>
+                        <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-minus text-slate-400 mt-1 shrink-0 text-xs"></i><span>Konten, informasi, atau iklan pihak ketiga yang mungkin muncul atau terhubung melalui platform.</span></li>
+                        <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-minus text-slate-400 mt-1 shrink-0 text-xs"></i><span>Kerugian tidak langsung, insidental, khusus, atau konsekuensial yang melebihi nilai transaksi yang dipersengketakan.</span></li>
+                        <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-minus text-slate-400 mt-1 shrink-0 text-xs"></i><span>Keterlambatan atau kegagalan pengiriman produk akibat kesalahan data yang diinput oleh pembeli pada saat checkout.</span></li>
+                    </ul>
+                    <div class="warn-box rounded-xl p-4 flex gap-3 items-start">
+                        <i class="fa-solid fa-triangle-exclamation text-amber-500 shrink-0 mt-0.5"></i>
+                        <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">Pengelola selalu berupaya memberikan layanan terbaik 24/7. Namun dengan sifat teknologi digital, <strong class="text-slate-800 dark:text-white">tidak ada jaminan uptime 100%</strong>. Platform akan memberikan notifikasi resmi untuk setiap jadwal maintenance terencana.</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- PASAL 9: PENANGGUHAN & PENGHAPUSAN AKUN -->
+            <article id="pasal-9" class="content-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+                <div class="flex items-center gap-4 px-6 py-5 border-b border-slate-100 dark:border-slate-800">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 to-amber-600 flex items-center justify-center text-white shrink-0"><i class="fa-solid fa-user-slash text-sm"></i></div>
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-amber-500 mb-0.5">Pasal 9</p>
+                        <h2 class="text-lg font-extrabold text-slate-900 dark:text-white">Penangguhan dan Penghapusan Akun</h2>
+                    </div>
+                </div>
+                <div class="px-6 py-6 space-y-5">
+                    <div class="space-y-3">
+                        <h3 class="text-sm font-bold text-slate-800 dark:text-white flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500 inline-block"></span>9.1 Alasan Penangguhan Sementara</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Pengelola berhak menangguhkan akun sementara dalam kondisi berikut:</p>
+                        <ul class="space-y-2.5">
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-triangle-exclamation text-amber-500 mt-0.5 shrink-0 text-xs"></i><span>Terdeteksi aktivitas mencurigakan atau anomali transaksi yang memerlukan investigasi lebih lanjut.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-triangle-exclamation text-amber-500 mt-0.5 shrink-0 text-xs"></i><span>Akun sedang dalam proses verifikasi identitas yang diminta oleh pengelola.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-triangle-exclamation text-amber-500 mt-0.5 shrink-0 text-xs"></i><span>Terdapat laporan klaim atau sengketa aktif yang sedang diselidiki oleh tim platform.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-triangle-exclamation text-amber-500 mt-0.5 shrink-0 text-xs"></i><span>Pelanggaran ringan terhadap ketentuan layanan yang masih dapat diperbaiki.</span></li>
+                        </ul>
+                    </div>
+                    <div class="w-full h-px bg-slate-100 dark:bg-slate-800"></div>
+                    <div class="space-y-3">
+                        <h3 class="text-sm font-bold text-slate-800 dark:text-white flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-red-500 inline-block"></span>9.2 Alasan Penghapusan Permanen</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Pengelola berhak menghapus akun secara permanen tanpa pemulihan dalam kondisi:</p>
+                        <ul class="space-y-2.5">
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-xmark text-red-500 mt-0.5 shrink-0 text-xs"></i><span>Terbukti menjual produk yang termasuk dalam kategori <strong class="text-slate-700 dark:text-slate-200">Produk yang Dilarang</strong> (Pasal 5).</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-xmark text-red-500 mt-0.5 shrink-0 text-xs"></i><span>Melakukan fraud, manipulasi transaksi, atau eksploitasi celah sistem untuk keuntungan pribadi yang merugikan pengguna lain.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-xmark text-red-500 mt-0.5 shrink-0 text-xs"></i><span>Memberikan informasi identitas <strong class="text-slate-700 dark:text-slate-200">palsu atau menyesatkan</strong> pada saat pendaftaran atau proses verifikasi.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-xmark text-red-500 mt-0.5 shrink-0 text-xs"></i><span>Pelanggaran berulang terhadap ketentuan layanan setelah mendapat peringatan resmi dari pengelola.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-xmark text-red-500 mt-0.5 shrink-0 text-xs"></i><span>Tindakan yang mengancam, melecehkan, atau merugikan pengguna lain atau tim pengelola platform.</span></li>
+                        </ul>
+                    </div>
+                    <div class="w-full h-px bg-slate-100 dark:bg-slate-800"></div>
+                    <div class="space-y-3">
+                        <h3 class="text-sm font-bold text-slate-800 dark:text-white flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-500 inline-block"></span>9.3 Konsekuensi Penghapusan Akun</h3>
+                        <ul class="space-y-2.5">
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Saldo aktif yang tersisa <strong class="text-slate-700 dark:text-slate-200">akan dicairkan</strong> ke rekening terdaftar penjual setelah masa investigasi selesai, kecuali saldo terbukti berasal dari aktivitas ilegal.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Data transaksi historis akan tetap tersimpan selama <strong class="text-slate-700 dark:text-slate-200">5 tahun</strong> untuk keperluan audit dan penyelesaian sengketa.</span></li>
+                            <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Pengguna yang akunnya dihapus karena pelanggaran serius dilarang mendaftar ulang tanpa izin tertulis dari pengelola.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+
+            <!-- PASAL 10: PERUBAHAN KETENTUAN -->
+            <article id="pasal-10" class="content-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+                <div class="flex items-center gap-4 px-6 py-5 border-b border-slate-100 dark:border-slate-800">
+                    <div class="w-10 h-10 rounded-xl num-badge flex items-center justify-center text-white shrink-0"><i class="fa-solid fa-arrows-rotate text-sm"></i></div>
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-brand-500 mb-0.5">Pasal 10</p>
+                        <h2 class="text-lg font-extrabold text-slate-900 dark:text-white">Perubahan Ketentuan Layanan</h2>
+                    </div>
+                </div>
+                <div class="px-6 py-6 space-y-4">
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Pengelola berhak mengubah, memperbarui, atau menambahkan ketentuan dalam dokumen ini <strong class="text-slate-700 dark:text-slate-200">sewaktu-waktu</strong> sesuai kebutuhan operasional dan perkembangan regulasi.</span></li>
+                        <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Setiap perubahan material akan diumumkan kepada pengguna melalui <strong class="text-slate-700 dark:text-slate-200">notifikasi email terdaftar, banner pada dashboard</strong>, dan/atau pengumuman di halaman utama platform.</span></li>
+                        <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Perubahan ketentuan berlaku efektif <strong class="text-slate-700 dark:text-slate-200">14 hari kalender</strong> setelah tanggal pengumuman, kecuali perubahan terkait keamanan yang dapat berlaku segera.</span></li>
+                        <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Pengguna yang <strong class="text-slate-700 dark:text-slate-200">melanjutkan penggunaan</strong> platform setelah tanggal efektif perubahan dianggap telah menyetujui ketentuan yang diperbarui.</span></li>
+                        <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Pengguna yang tidak menyetujui perubahan ketentuan berhak menutup akunnya dan menarik saldo aktif sebelum tanggal efektif berlaku.</span></li>
+                        <li class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0 text-xs"></i><span>Riwayat versi dokumen syarat dan ketentuan yang lama akan tetap dapat diakses sebagai <strong class="text-slate-700 dark:text-slate-200">arsip referensi</strong> melalui halaman khusus di platform.</span></li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- PASAL 11: PENUTUP -->
+            <article id="pasal-11" class="content-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+                <div class="flex items-center gap-4 px-6 py-5 border-b border-slate-100 dark:border-slate-800">
+                    <div class="w-10 h-10 rounded-xl num-badge flex items-center justify-center text-white shrink-0"><i class="fa-solid fa-check-double text-sm"></i></div>
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-brand-500 mb-0.5">Pasal 11</p>
+                        <h2 class="text-lg font-extrabold text-slate-900 dark:text-white">Penutup</h2>
+                    </div>
+                </div>
+                <div class="px-6 py-6 space-y-5">
+                    <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Dokumen Syarat dan Ketentuan ini merupakan keseluruhan perjanjian antara pengguna dan pengelola platform KlikVirtual.ID, dan menggantikan semua perjanjian, pernyataan, atau pemahaman sebelumnya yang bersifat lisan maupun tertulis terkait penggunaan layanan ini.</p>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Apabila ada ketentuan dalam dokumen ini yang dinyatakan tidak sah atau tidak dapat diberlakukan oleh pengadilan yang berwenang, ketentuan lainnya tetap berlaku dan mengikat secara penuh.</p>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Seluruh ketentuan ini diatur dan ditafsirkan berdasarkan <strong class="text-slate-700 dark:text-slate-200">hukum Negara Kesatuan Republik Indonesia</strong>.</p>
+                    <div class="grid sm:grid-cols-2 gap-4 mt-2">
+                        <div class="rounded-xl bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200/60 dark:border-emerald-800/30 p-4 flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center shrink-0"><i class="fa-brands fa-whatsapp text-emerald-500"></i></div>
+                            <div>
+                                <p class="text-xs font-bold text-slate-800 dark:text-white mb-0.5">WhatsApp CS</p>
+                                <a href="https://wa.me/6282340915319" target="_blank" class="text-xs text-emerald-600 dark:text-emerald-400 hover:underline font-medium">082340915319</a>
+                                <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Senin – Minggu, 08.00 – 22.00 WIB</p>
+                            </div>
+                        </div>
+                        <div class="rounded-xl bg-sky-50 dark:bg-sky-950/20 border border-sky-200/60 dark:border-sky-800/30 p-4 flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-sky-500/10 flex items-center justify-center shrink-0"><i class="fa-brands fa-telegram text-sky-500"></i></div>
+                            <div>
+                                <p class="text-xs font-bold text-slate-800 dark:text-white mb-0.5">Telegram Support</p>
+                                <a href="https://t.me/aryadwinata543" target="_blank" class="text-xs text-sky-600 dark:text-sky-400 hover:underline font-medium">@aryadwinata543</a>
+                                <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Respon cepat via Telegram</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-5 rounded-2xl bg-gradient-to-r from-brand-500/10 via-violet-500/8 to-purple-500/10 border border-brand-500/20 dark:border-brand-500/30 text-center space-y-2">
+                        <i class="fa-solid fa-handshake text-brand-500 text-2xl"></i>
+                        <p class="text-sm font-bold text-slate-800 dark:text-white">Dengan menggunakan platform KlikVirtual.ID,</p>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 max-w-md mx-auto leading-relaxed">Anda menyatakan telah membaca, memahami, dan menyetujui seluruh Syarat dan Ketentuan di atas sebagai perjanjian yang sah dan mengikat.</p>
+                        <p class="text-[10px] text-slate-400 dark:text-slate-500 pt-1">© 2026 KlikVirtual.ID — Bagian dari ekosistem PBS Digital Store</p>
+                    </div>
+                </div>
+            </article>
+
+        </main>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="theme-transition border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 py-12">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+            <div class="space-y-4 md:col-span-1">
+                <a href="index.html" class="flex items-center gap-2 group">
+                    <img src="https://putrabttstore.web.id/Logo%20Klik%20Virtual.png" alt="KlikVirtual.ID Logo" class="w-8 h-8 object-contain rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/32x32/5850ec/ffffff?text=KV';">
+                    <span class="text-base font-extrabold tracking-tight text-slate-900 dark:text-white">KlikVirtual<span class="text-brand-500">.ID</span></span>
                 </a>
-
-                <!-- Mobile Menu Button -->
-                <button @click="mobileMenuOpen = !mobileMenuOpen"
-                    class="p-2 md:hidden text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg">
-                    <i class="fa-solid text-xl" :class="mobileMenuOpen ? 'fa-xmark' : 'fa-bars'"></i>
-                </button>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">Ekosistem marketplace multi-seller produk digital tercepat, termudah, dan terotomatisasi di Indonesia.</p>
+                <div class="space-y-2 pt-3 border-t border-slate-100 dark:border-slate-800/60">
+                    <p class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">Hubungi Kami</p>
+                    <a href="https://wa.me/6282340915319" target="_blank" class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400 hover:text-brand-500 transition-colors"><i class="fa-brands fa-whatsapp text-emerald-500 text-sm"></i> 082340915319</a>
+                    <a href="https://t.me/aryadwinata543" target="_blank" class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400 hover:text-brand-500 transition-colors"><i class="fa-brands fa-telegram text-sky-500 text-sm"></i> @aryadwinata543</a>
+                </div>
+            </div>
+            <div class="space-y-2">
+                <h5 class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Layanan Inti</h5>
+                <ul class="space-y-1.5 text-xs text-slate-600 dark:text-slate-400">
+                    <li><a href="index.html#fitur-store" class="hover:text-brand-500 transition-colors">Market Storefront</a></li>
+                    <li><a href="index.html#fitur-dashboard" class="hover:text-brand-500 transition-colors">Seller Dashboard</a></li>
+                    <li><a href="#" class="hover:text-brand-500 transition-colors">Sistem Reseller Dinamis</a></li>
+                    <li><a href="#" class="hover:text-brand-500 transition-colors">Program Affiliate PBS</a></li>
+                </ul>
+            </div>
+            <div class="space-y-2">
+                <h5 class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Keunggulan Toko</h5>
+                <ul class="space-y-1.5 text-xs text-slate-600 dark:text-slate-400">
+                    <li><span>Pembayaran QRIS &amp; E-Wallet</span></li>
+                    <li><span>Pengiriman Instan Otomatis</span></li>
+                    <li><span>Notifikasi Real-Time Telegram</span></li>
+                    <li><span>Kirim Email Resi Transaksi</span></li>
+                </ul>
+            </div>
+            <div class="space-y-2">
+                <h5 class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Keamanan &amp; Layanan</h5>
+                <ul class="space-y-1.5 text-xs text-slate-600 dark:text-slate-400">
+                    <li><span>✓ Proteksi Bot Otomatis</span></li>
+                    <li><span>✓ Enkripsi Keamanan Akun</span></li>
+                    <li><span>✓ Pencegahan Transaksi Palsu</span></li>
+                    <li><span>✓ Backup Data Berkala</span></li>
+                </ul>
             </div>
         </div>
-
-        <!-- Mobile Menu Panel -->
-        <div x-show="mobileMenuOpen" @click.away="mobileMenuOpen = false"
-            class="md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-4 py-3 space-y-2 shadow-xl"
-            x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 -translate-y-4"
-            x-transition:enter-end="opacity-100 translate-y-0" x-cloak>
-            <a href="index.html" @click="mobileMenuOpen = false"
-                class="block px-3 py-2.5 rounded-lg text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-900">Beranda</a>
-            <a href="index.html#fitur-store" @click="mobileMenuOpen = false"
-                class="block px-3 py-2.5 rounded-lg text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-900">Halaman
-                Toko</a>
-            <a href="index.html#fitur-dashboard" @click="mobileMenuOpen = false"
-                class="block px-3 py-2.5 rounded-lg text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-900">Fitur
-                Toko</a>
-            <a href="index.html#faq" @click="mobileMenuOpen = false"
-                class="block px-3 py-2.5 rounded-lg text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-900">Tanya
-                Jawab</a>
-            <a href="https://seller.klikvirtual.id/register" target="_blank" rel="noopener noreferrer"
-                @click="mobileMenuOpen = false"
-                class="block w-full text-center px-4 py-2.5 font-bold rounded-lg text-white bg-brand-500 hover:bg-brand-600 shadow-md">
-                Daftar Buka Toko Gratis <i class="fa-solid fa-rocket ml-1 text-xs"></i>
-            </a>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section
-        class="relative overflow-hidden py-16 lg:py-24 bg-gradient-to-b from-brand-500/10 via-transparent to-transparent">
-        <div
-            class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-brand-500/10 rounded-full blur-[100px] pointer-events-none">
-        </div>
-
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
-            <div
-                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-50 text-brand-600 dark:bg-brand-950/80 dark:text-brand-100 border border-brand-200/50 dark:border-brand-800/50 text-xs font-bold uppercase tracking-wider">
-                <i class="fa-solid fa-circle-info text-brand-500"></i> Ketentuan Seller KlikVirtual
-            </div>
-
-            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
-                Ketentuan Berjualan
-            </h1>
-
-            <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
-                Dengan membuka toko dan menjual produk di platform kami, seller dianggap telah membaca, memahami, dan
-                menyetujui seluruh ketentuan yang berlaku di bawah ini.
-            </p>
-        </div>
-    </section>
-
-    <!-- Main Content Container -->
-    <main class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-24 space-y-8">
-
-        <!-- Section 1 -->
-        <div
-            class="theme-transition bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800/80 shadow-lg hover:shadow-xl hover:-translate-y-1 hover:border-brand-500/30 transition-all duration-300 flex flex-col md:flex-row gap-8 items-center group">
-            <!-- Left content -->
-            <div class="flex flex-col sm:flex-row gap-6 items-start flex-1 w-full">
-                <div
-                    class="w-12 h-12 rounded-2xl bg-brand-50 dark:bg-brand-950/80 text-brand-500 flex items-center justify-center text-xl shrink-0 shadow-inner group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                    <i class="fa-solid fa-percent"></i>
-                </div>
-                <div class="space-y-4 flex-1">
-                    <h2
-                        class="text-xl font-extrabold text-slate-900 dark:text-white group-hover:text-brand-500 transition-colors">
-                        1. Biaya Layanan Penjual</h2>
-                    <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                        Setiap transaksi penjualan produk digital yang berhasil diselesaikan di marketplace akan
-                        dikenakan biaya layanan platform sebesar <strong class="text-brand-500 font-bold">5%</strong>
-                        dari nilai transaksi.
-                    </p>
-                    <ul class="space-y-3 text-xs text-slate-500 dark:text-slate-400">
-                        <li class="flex items-start gap-2">
-                            <i
-                                class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0 group-hover:scale-110 transition-transform duration-300"></i>
-                            <span>Biaya layanan dipotong secara otomatis oleh sistem dari total hasil penjualan setiap
-                                transaksi.</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i
-                                class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0 group-hover:scale-110 transition-transform duration-300"></i>
-                            <span>Seller akan menerima dana bersih langsung ke saldo akun setelah dikurangi potongan
-                                biaya layanan tersebut.</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i
-                                class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0 group-hover:scale-110 transition-transform duration-300"></i>
-                            <span>Biaya layanan dialokasikan untuk pemeliharaan server 24/7, keamanan transaksi, serta
-                                pengembangan platform.</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Right illustration -->
-            <div class="w-full md:w-1/3 shrink-0 flex justify-center max-w-[200px] md:max-w-[220px]">
-                <div
-                    class="w-full aspect-square rounded-3xl bg-gradient-to-tr from-brand-500/5 to-violet-500/10 p-4 border border-brand-500/10 dark:border-brand-500/20 shadow-sm animate-soft-float group-hover:scale-105 transition-transform duration-300">
-                    <img src="assets/1.png" alt="Biaya Layanan Penjual"
-                        class="w-full h-full object-contain filter drop-shadow-lg">
-                </div>
+        <div class="border-t border-slate-200 dark:border-slate-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+            <p>© 2026 KlikVirtual.ID. All rights reserved. Part of PBS Digital Store Ecosystem.</p>
+            <div class="flex items-center gap-4 text-base">
+                <a href="#" class="hover:text-brand-500 transition-colors" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="hover:text-brand-500 transition-colors" aria-label="Twitter/X"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#" class="hover:text-brand-500 transition-colors" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+                <a href="#" class="hover:text-brand-500 transition-colors" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
         </div>
+    </div>
+</footer>
 
-        <!-- Section 2 -->
-        <div
-            class="theme-transition bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800/80 shadow-lg hover:shadow-xl hover:-translate-y-1 hover:border-brand-500/30 transition-all duration-300 flex flex-col md:flex-row-reverse gap-8 items-center group">
-            <!-- Right content -->
-            <div class="flex flex-col sm:flex-row gap-6 items-start flex-1 w-full">
-                <div
-                    class="w-12 h-12 rounded-2xl bg-brand-50 dark:bg-brand-950/80 text-brand-500 flex items-center justify-center text-xl shrink-0 shadow-inner group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                    <i class="fa-solid fa-credit-card"></i>
-                </div>
-                <div class="space-y-4 flex-1">
-                    <h2
-                        class="text-xl font-extrabold text-slate-900 dark:text-white group-hover:text-brand-500 transition-colors">
-                        2. Biaya Pembayaran</h2>
-                    <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                        Setiap transaksi pembayaran QRIS atau dompet digital akan dikenakan biaya gateway transaksi
-                        sebesar <strong class="text-brand-500 font-bold">0,7%</strong> yang dibebankan langsung kepada
-                        pihak pembeli.
-                    </p>
-                    <ul class="space-y-3 text-xs text-slate-500 dark:text-slate-400">
-                        <li class="flex items-start gap-2">
-                            <i
-                                class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0 group-hover:scale-110 transition-transform duration-300"></i>
-                            <span>Biaya payment gateway ini akan ditampilkan secara transparan kepada pembeli di halaman
-                                checkout sebelum melakukan pembayaran.</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i
-                                class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0 group-hover:scale-110 transition-transform duration-300"></i>
-                            <span>Pihak seller/penjual sama sekali tidak dibebankan biaya tambahan apa pun atas biaya
-                                gerbang pembayaran ini.</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Left illustration -->
-            <div class="w-full md:w-1/3 shrink-0 flex justify-center max-w-[200px] md:max-w-[220px]">
-                <div class="w-full aspect-square rounded-3xl bg-gradient-to-tr from-brand-500/5 to-violet-500/10 p-4 border border-brand-500/10 dark:border-brand-500/20 shadow-sm animate-soft-float group-hover:scale-105 transition-transform duration-300"
-                    style="animation-delay: 0.5s;">
-                    <img src="assets/2.png" alt="Biaya Pembayaran"
-                        class="w-full h-full object-contain filter drop-shadow-lg">
-                </div>
-            </div>
-        </div>
+<script>
+    function landingPageGlobal() {
+        return { darkMode: false, mobileMenuOpen: false }
+    }
 
-        <!-- Section 3 -->
-        <div
-            class="theme-transition bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800/80 shadow-lg hover:shadow-xl hover:-translate-y-1 hover:border-brand-500/30 transition-all duration-300 flex flex-col md:flex-row gap-8 items-center group">
-            <!-- Left content -->
-            <div class="flex flex-col sm:flex-row gap-6 items-start flex-1 w-full">
-                <div
-                    class="w-12 h-12 rounded-2xl bg-brand-50 dark:bg-brand-950/80 text-brand-500 flex items-center justify-center text-xl shrink-0 shadow-inner group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                    <i class="fa-solid fa-money-bill-transfer"></i>
-                </div>
-                <div class="space-y-4 flex-1">
-                    <h2
-                        class="text-xl font-extrabold text-slate-900 dark:text-white group-hover:text-brand-500 transition-colors">
-                        3. Ketentuan Pencairan Dana</h2>
-                    <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                        Pencairan dana hasil penjualan (penarikan saldo) dari dashboard seller KlikVirtual.ID tunduk
-                        pada beberapa ketentuan dasar berikut:
-                    </p>
-                    <ul class="space-y-3 text-xs text-slate-500 dark:text-slate-400">
-                        <li class="flex items-start gap-2">
-                            <i
-                                class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0 group-hover:scale-110 transition-transform duration-300"></i>
-                            <span>Batas minimum pencairan saldo yang diperbolehkan adalah sebesar <strong
-                                    class="text-slate-900 dark:text-white font-bold">Rp 50.000</strong>.</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i
-                                class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0 group-hover:scale-110 transition-transform duration-300"></i>
-                            <span>Setiap transaksi penarikan dana akan dikenakan biaya administrasi transfer tetap
-                                sebesar <strong class="text-slate-900 dark:text-white font-bold">Rp 5.000</strong> per
-                                penarikan.</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i
-                                class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0 group-hover:scale-110 transition-transform duration-300"></i>
-                            <span>Permintaan penarikan hanya diproses apabila saldo aktif yang tersedia telah memenuhi
-                                limit batas pencairan minimum.</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i
-                                class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0 group-hover:scale-110 transition-transform duration-300"></i>
-                            <span>Dana akan ditransfer secara aman oleh sistem administrasi KlikVirtual langsung ke
-                                rekening bank atau akun e-wallet terdaftar Anda.</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Right illustration -->
-            <div class="w-full md:w-1/3 shrink-0 flex justify-center max-w-[200px] md:max-w-[220px]">
-                <div class="w-full aspect-square rounded-3xl bg-gradient-to-tr from-brand-500/5 to-violet-500/10 p-4 border border-brand-500/10 dark:border-brand-500/20 shadow-sm animate-soft-float group-hover:scale-105 transition-transform duration-300"
-                    style="animation-delay: 1s;">
-                    <img src="assets/3.png" alt="Ketentuan Pencairan Dana"
-                        class="w-full h-full object-contain filter drop-shadow-lg">
-                </div>
-            </div>
-        </div>
-
-        <!-- Section 4 -->
-        <div
-            class="theme-transition bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800/80 shadow-lg hover:shadow-xl hover:-translate-y-1 hover:border-brand-500/30 transition-all duration-300 flex flex-col md:flex-row-reverse gap-8 items-center group">
-            <!-- Right content -->
-            <div class="flex flex-col sm:flex-row gap-6 items-start flex-1 w-full">
-                <div
-                    class="w-12 h-12 rounded-2xl bg-brand-50 dark:bg-brand-950/80 text-brand-500 flex items-center justify-center text-xl shrink-0 shadow-inner group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                    <i class="fa-solid fa-clock-rotate-left"></i>
-                </div>
-                <div class="space-y-4 flex-1">
-                    <h2
-                        class="text-xl font-extrabold text-slate-900 dark:text-white group-hover:text-brand-500 transition-colors">
-                        4. Masa Verifikasi Transaksi (72 Jam)</h2>
-                    <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                        Demi menjaga integritas keamanan ekosistem transaksi bagi pembeli dan penjual, setiap saldo
-                        hasil penjualan akan melewati masa penahanan verifikasi keamanan selama <strong
-                            class="text-brand-500 font-bold">3 &times; 24 jam (72 jam)</strong> sebelum saldo tersebut
-                        aktif dan dapat dicairkan.
-                    </p>
-                    <ul class="space-y-3 text-xs text-slate-500 dark:text-slate-400">
-                        <li class="flex items-start gap-2">
-                            <i
-                                class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0 group-hover:scale-110 transition-transform duration-300"></i>
-                            <span>Memberikan waktu penyelesaian (settlement) pembayaran secara resmi dari bank/gateway
-                                mitra.</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i
-                                class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0 group-hover:scale-110 transition-transform duration-300"></i>
-                            <span>Mendeteksi adanya transaksi mencurigakan, manipulasi pembayaran, atau tindakan fraud
-                                lainnya secara dini.</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i
-                                class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0 group-hover:scale-110 transition-transform duration-300"></i>
-                            <span>Menyediakan waktu penanganan apabila terdapat klaim atau keluhan pembeli terkait
-                                kondisi produk digital yang dikirim.</span>
-                        </li>
-                    </ul>
-
-                    <!-- Notice Box inside card -->
-                    <div
-                        class="border-l-4 border-brand-500 bg-brand-50/50 dark:bg-brand-950/20 p-4 rounded-r-2xl text-xs text-slate-700 dark:text-slate-300 mt-4 leading-relaxed hover:shadow-md transition-all duration-300">
-                        <strong class="text-brand-600 dark:text-brand-400 font-bold"><i
-                                class="fa-solid fa-circle-exclamation mr-1"></i> Informasi Penting:</strong><br>
-                        Masa verifikasi 72 jam ini bukanlah penahanan dana tanpa sebab, melainkan kebijakan perlindungan
-                        keamanan standar industri untuk menjamin keabsahan transaksi sebelum dana ditransfer keluar dari
-                        platform.
-                    </div>
-                </div>
-            </div>
-            <!-- Left illustration -->
-            <div class="w-full md:w-1/3 shrink-0 flex justify-center max-w-[200px] md:max-w-[220px]">
-                <div class="w-full aspect-square rounded-3xl bg-gradient-to-tr from-brand-500/5 to-violet-500/10 p-4 border border-brand-500/10 dark:border-brand-500/20 shadow-sm animate-soft-float group-hover:scale-105 transition-transform duration-300"
-                    style="animation-delay: 1.5s;">
-                    <img src="assets/4.png" alt="Masa Verifikasi Transaksi"
-                        class="w-full h-full object-contain filter drop-shadow-lg">
-                </div>
-            </div>
-        </div>
-
-        <!-- Section 5 -->
-        <div
-            class="theme-transition bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800/80 shadow-lg hover:shadow-xl hover:-translate-y-1 hover:border-brand-500/30 transition-all duration-300 flex flex-col md:flex-row gap-8 items-center group">
-            <!-- Left content -->
-            <div class="flex flex-col sm:flex-row gap-6 items-start flex-1 w-full">
-                <div
-                    class="w-12 h-12 rounded-2xl bg-brand-50 dark:bg-brand-950/80 text-brand-500 flex items-center justify-center text-xl shrink-0 shadow-inner group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                    <i class="fa-solid fa-scale-balanced"></i>
-                </div>
-                <div class="space-y-4 flex-1">
-                    <h2
-                        class="text-xl font-extrabold text-slate-900 dark:text-white group-hover:text-brand-500 transition-colors">
-                        5. Hak &amp; Kebijakan Platform</h2>
-                    <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                        KlikVirtual.ID selaku penyelenggara layanan berhak mengambil tindakan-tindakan berikut untuk
-                        memelihara keamanan platform:
-                    </p>
-                    <ul class="space-y-3 text-xs text-slate-500 dark:text-slate-400">
-                        <li class="flex items-start gap-2">
-                            <i
-                                class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0 group-hover:scale-110 transition-transform duration-300"></i>
-                            <span>Berhak menunda atau membekukan sementara saldo aktif jika ditemukan indikasi fraud,
-                                eksploitasi sistem, atau aktivitas penjualan ilegal.</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i
-                                class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0 group-hover:scale-110 transition-transform duration-300"></i>
-                            <span>Berhak meminta dokumen verifikasi tambahan (seperti KTP atau identitas lainnya) dalam
-                                proses peninjauan keamanan akun seller.</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <i
-                                class="fa-solid fa-check text-emerald-500 mt-0.5 shrink-0 group-hover:scale-110 transition-transform duration-300"></i>
-                            <span>Berhak membatasi fitur toko, menolak produk, hingga menonaktifkan akun secara permanen
-                                yang terbukti melanggar syarat ketentuan.</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Right illustration -->
-            <div class="w-full md:w-1/3 shrink-0 flex justify-center max-w-[200px] md:max-w-[220px]">
-                <div class="w-full aspect-square rounded-3xl bg-gradient-to-tr from-brand-500/5 to-violet-500/10 p-4 border border-brand-500/10 dark:border-brand-500/20 shadow-sm animate-soft-float group-hover:scale-105 transition-transform duration-300"
-                    style="animation-delay: 2s;">
-                    <img src="assets/5.png" alt="Hak & Kebijakan Platform"
-                        class="w-full h-full object-contain filter drop-shadow-lg">
-                </div>
-            </div>
-        </div>
-
-        <!-- Section 6 -->
-        <div
-            class="theme-transition bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800/80 shadow-lg hover:shadow-xl hover:-translate-y-1 hover:border-brand-500/30 transition-all duration-300 flex flex-col md:flex-row-reverse gap-8 items-center group">
-            <!-- Right content -->
-            <div class="flex flex-col sm:flex-row gap-6 items-start flex-1 w-full">
-                <div
-                    class="w-12 h-12 rounded-2xl bg-brand-50 dark:bg-brand-950/80 text-brand-500 flex items-center justify-center text-xl shrink-0 shadow-inner group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                    <i class="fa-solid fa-file-signature"></i>
-                </div>
-                <div class="space-y-4 flex-1">
-                    <h2
-                        class="text-xl font-extrabold text-slate-900 dark:text-white group-hover:text-brand-500 transition-colors">
-                        6. Persetujuan &amp; Kepatuhan Seller</h2>
-                    <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                        Dengan mendaftar sebagai seller dan memanfaatkan seluruh fasilitas marketplace KlikVirtual.ID,
-                        Anda secara otomatis dinyatakan memahami, menyetujui, dan bersedia tunduk pada seluruh peraturan
-                        pemotongan biaya transaksi, biaya penarikan, serta masa verifikasi saldo yang berlaku di
-                        platform ini tanpa terkecuali.
-                    </p>
-                </div>
-            </div>
-            <!-- Left illustration -->
-            <div class="w-full md:w-1/3 shrink-0 flex justify-center max-w-[200px] md:max-w-[220px]">
-                <div class="w-full aspect-square rounded-3xl bg-gradient-to-tr from-brand-500/5 to-violet-500/10 p-4 border border-brand-500/10 dark:border-brand-500/20 shadow-sm animate-soft-float group-hover:scale-105 transition-transform duration-300"
-                    style="animation-delay: 2.5s;">
-                    <img src="assets/6.png" alt="Persetujuan & Kepatuhan Seller"
-                        class="w-full h-full object-contain filter drop-shadow-lg">
-                </div>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- Footer Section -->
-    <footer class="theme-transition border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 py-12">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-                <!-- Col 1: Brand with specific logo -->
-                <div class="space-y-4 md:col-span-1">
-                    <a href="index.html" class="flex items-center gap-2 group">
-                        <img src="https://putrabttstore.web.id/Logo%20Klik%20Virtual.png" alt="KlikVirtual.ID Logo"
-                            class="w-8 h-8 object-contain rounded-lg">
-                        <span
-                            class="text-base font-extrabold tracking-tight text-slate-900 dark:text-white">KlikVirtual<span
-                                class="text-brand-500">.ID</span></span>
-                    </a>
-                    <p class="text-[11px] text-slate-500 dark:text-slate-400">Ekosistem marketplace multi-seller produk
-                        digital tercepat, termudah, dan terotomatisasi di Indonesia. Bagian dari PBS Digital Store.</p>
-
-                    <!-- Admin Contact Info -->
-                    <div class="space-y-2 pt-3 border-t border-slate-100 dark:border-slate-800/60">
-                        <p class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">Hubungi Kami</p>
-                        <a href="https://wa.me/6282340915319" target="_blank"
-                            class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400 hover:text-brand-500 transition-colors">
-                            <i class="fa-brands fa-whatsapp text-emerald-500 text-sm"></i> WhatsApp: 082340915319
-                        </a>
-                        <a href="https://t.me/aryadwinata543" target="_blank"
-                            class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400 hover:text-brand-500 transition-colors">
-                            <i class="fa-brands fa-telegram text-sky-500 text-sm"></i> Telegram: @aryadwinata543
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Col 2: Services -->
-                <div class="space-y-2">
-                    <h5 class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Layanan Inti</h5>
-                    <ul class="space-y-1.5 text-xs text-slate-600 dark:text-slate-400">
-                        <li><a href="index.html#fitur-store" class="hover:text-brand-500">Market Storefront</a></li>
-                        <li><a href="index.html#fitur-dashboard" class="hover:text-brand-500">Seller Dashboard</a></li>
-                        <li><a href="#" class="hover:text-brand-500">Sistem Reseller Dinamis</a></li>
-                        <li><a href="#" class="hover:text-brand-500">Program Affiliate PBS</a></li>
-                    </ul>
-                </div>
-
-                <!-- Col 3: Features -->
-                <div class="space-y-2">
-                    <h5 class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Keunggulan Toko</h5>
-                    <ul class="space-y-1.5 text-xs text-slate-600 dark:text-slate-400">
-                        <li><span class="block">Pembayaran QRIS &amp; E-Wallet</span></li>
-                        <li><span class="block">Pengiriman Instan Otomatis</span></li>
-                        <li><span class="block">Notifikasi Real-Time Telegram</span></li>
-                        <li><span class="block">Kirim Email Resi Transaksi</span></li>
-                    </ul>
-                </div>
-
-                <!-- Col 4: Safety info -->
-                <div class="space-y-2">
-                    <h5 class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Keamanan &amp; Layanan
-                    </h5>
-                    <ul class="space-y-1.5 text-xs text-slate-600 dark:text-slate-400">
-                        <li><span class="block">✓ Sistem Proteksi Bot Otomatis</span></li>
-                        <li><span class="block">✓ Enkripsi Keamanan Akun Seller</span></li>
-                        <li><span class="block">✓ Pencegahan Transaksi Palsu</span></li>
-                        <li><span class="block">✓ Backup Data Penjualan Berkala</span></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Footer Bottom -->
-            <div
-                class="border-t border-slate-200 dark:border-slate-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-                <p>© 2026 KlikVirtual.ID. All rights reserved. Part of PBS Digital Store Ecosystem.</p>
-                <div class="flex items-center gap-4 text-base">
-                    <a href="#" class="hover:text-brand-500 transition-colors" aria-label="Facebook"><i
-                            class="fa-brands fa-facebook"></i></a>
-                    <a href="#" class="hover:text-brand-500 transition-colors" aria-label="Twitter/X"><i
-                            class="fa-brands fa-twitter"></i></a>
-                    <a href="#" class="hover:text-brand-500 transition-colors" aria-label="Telegram"><i
-                            class="fa-brands fa-telegram"></i></a>
-                    <a href="#" class="hover:text-brand-500 transition-colors" aria-label="WhatsApp"><i
-                            class="fa-brands fa-whatsapp"></i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Custom JS / Alpine Functions -->
-    <script>
-        function landingPageGlobal() {
-            return {
-                darkMode: false, // Defaulting to Light Mode
-                mobileMenuOpen: false
+    function tocHighlight() {
+        return {
+            init() {
+                const sections = document.querySelectorAll('article[id^="pasal-"]');
+                const links = document.querySelectorAll('.toc-link');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            links.forEach(l => l.classList.remove('active'));
+                            const active = document.querySelector(`.toc-link[href="#${entry.target.id}"]`);
+                            if (active) active.classList.add('active');
+                        }
+                    });
+                }, { rootMargin: '-20% 0px -70% 0px' });
+                sections.forEach(s => observer.observe(s));
             }
         }
-    </script>
-</body>
+    }
 
+    window.addEventListener('scroll', () => {
+        const scrollTop = document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        document.getElementById('progress-bar').style.width = (scrollTop / scrollHeight * 100) + '%';
+    });
+</script>
+</body>
 </html>
